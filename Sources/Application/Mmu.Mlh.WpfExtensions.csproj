@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props" Condition="Exists('..\..\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" />
+  <Import Project="..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +15,8 @@
     <AssemblyName>Mmu.Mlh.WpfExtensions</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,24 +36,151 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.13\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.3\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\NLog.4.5.2\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="StructureMap, Version=4.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\StructureMap.4.6.1\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Initialization\MaterialDesign\IMaterialDesignInitializationService.cs" />
+    <Compile Include="Areas\Initialization\MaterialDesign\Handlers\IResourceDictionaryFactory.cs" />
+    <Compile Include="Areas\Initialization\AppStart\Implementation\AppStartService.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Models\TypeWithNormalizedName.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Models\TypeWithNormalizeNameCollection.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Models\ViewModelMap.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\IDataTemplateFactory.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\Implementation\DataTemplateFactory.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\Implementation\ViewViewModelMapFactory.cs" />
+    <Compile Include="Areas\Initialization\BootstrapService.cs" />
+    <Compile Include="Areas\Initialization\MaterialDesign\Implementation\MaterialDesignInitializationService.cs" />
+    <Compile Include="Areas\Initialization\MaterialDesign\Handlers\Implementation\ResourceDictionaryFactory.cs" />
+    <Compile Include="Areas\Initialization\AppStart\IAppStartService.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\IViewViewModelMapFactory.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\Implementation\ViewModelMappingService.cs" />
+    <Compile Include="Areas\MvvmShell\Commands\ParametredRelayCommand.cs" />
+    <Compile Include="Areas\MvvmShell\Commands\RelayCommand.cs" />
+    <Compile Include="Areas\DependencyProperties\DataGridDoubleClickCommandBinding.cs" />
+    <Compile Include="Areas\DependencyProperties\EventCommandBinding.cs" />
+    <Compile Include="Areas\DependencyProperties\MouseMoveCommandBinding.cs" />
+    <Compile Include="Areas\Dialogs\FileDialogs\Models\FileDialogResult.cs" />
+    <Compile Include="Areas\Dialogs\FileDialogs\Services\IFileDialogService.cs" />
+    <Compile Include="Areas\Dialogs\FileDialogs\Services\Implementation\FileDialogService.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Services\IViewModelMappingService.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Converters\DarkThemeToBooleanConverter.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Converters\LightThemeToBooleanConverter.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Models\AppearanceTheme.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Handlers\Implementation\RegistryHandler.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Handlers\IRegistryHandler.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\IAppearanceService.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Implementation\AppearanceService.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithBehaviorBase.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IInitializableViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\INavigatableViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithHeading.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Views\IClosableView.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\ViewModelWithErrorInfo.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\IInitializableViewModelCommand.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModelCommand.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\ViewModelBase.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\ViewModelCommand.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModelCommandContainer.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\ViewModels\ViewModelContainer.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Services\IViewModelFactory.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Services\Implementation\ViewModelFactory.cs" />
+    <Compile Include="Areas\MvvmShell\AppContext\Views\ViewContainer.xaml.cs">
+      <DependentUpon>ViewContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\MvvmShell\Views\Models\IViewMap.cs" />
+    <Compile Include="Areas\Navigation\Services\IMainNavigationInitializingService.cs" />
+    <Compile Include="Areas\Navigation\Services\Implementation\MainNavigationInitializingService.cs" />
+    <Compile Include="Areas\Navigation\Services\Implementation\NavigationConfigurationService.cs" />
+    <Compile Include="Areas\Navigation\Services\Implementation\NavigationService.cs" />
+    <Compile Include="Areas\Navigation\Services\INavigationConfigurationService.cs" />
+    <Compile Include="Areas\Navigation\Services\INavigationService.cs" />
+    <Compile Include="Areas\Validations\Models\PropertyValidation.cs" />
+    <Compile Include="Areas\Validations\Models\PropertyValidationContainer.cs" />
+    <Compile Include="Areas\Validations\Models\ValidationContainer.cs" />
+    <Compile Include="Areas\Validations\Models\ValidationErrors.cs" />
+    <Compile Include="Areas\Validations\Models\ValidationResult.cs" />
+    <Compile Include="Areas\Validations\ValidationExpressions\CoreValidationExpressions\StringNotNullOrEmptyValidationExpression.cs" />
+    <Compile Include="Areas\Validations\ValidationExpressions\IValidationExpression.cs" />
+    <Compile Include="Infrastructure\DependencyInjection\WpfExtensionsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Infrastructure\NuGet\Mmu.Mlh.WpfExtensions.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Validations\Services\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Infrastructure\Assets\M.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\Text.Analyzers.2.6.0\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Areas\MvvmShell\AppContext\Views\ViewContainerDict.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Areas\MvvmShell\AppContext\Views\ViewContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.CodeQuality.Analyzers.2.6.0\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.NetCore.Analyzers.2.6.0\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.NetFramework.Analyzers.2.6.0\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\..\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Text.Analyzers.2.6.0\build\Text.Analyzers.props'))" />
+  </Target>
 </Project>

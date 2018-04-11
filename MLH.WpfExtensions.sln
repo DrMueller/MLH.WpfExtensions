@@ -5,6 +5,17 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Mlh.WpfExtensions", "Sources\Application\Mmu.Mlh.WpfExtensions.csproj", "{C9DFD815-9E69-4AA0-8276-3DFAA1DE9D45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Mlh.WpfExtensions.TestUI", "Mmu.Mlh.WpfExtensons.TestUI\Mmu.Mlh.WpfExtensions.TestUI.csproj", "{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{ADA9BA40-C7AC-4A67-ADC8-16A5D153664F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		CA_ProductionCode.ruleset = CA_ProductionCode.ruleset
+		CA_UnitTests.ruleset = CA_UnitTests.ruleset
+		Settings.StyleCop = Settings.StyleCop
+		Todos.txt = Todos.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +26,10 @@ Global
 		{C9DFD815-9E69-4AA0-8276-3DFAA1DE9D45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9DFD815-9E69-4AA0-8276-3DFAA1DE9D45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9DFD815-9E69-4AA0-8276-3DFAA1DE9D45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
