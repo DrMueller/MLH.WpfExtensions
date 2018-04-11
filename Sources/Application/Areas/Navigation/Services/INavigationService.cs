@@ -1,12 +1,13 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
+﻿using System.Threading.Tasks;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services
 {
     public interface INavigationService
     {
-        void NavigateTo<T>()
-            where T : INavigatableViewModel;
+        Task NavigateToAsync<T>()
+            where T : IViewModel;
 
-        void NavigateTo(INavigatableViewModel target);
+        Task NavigateToAsync(IViewModel target);
     }
 }

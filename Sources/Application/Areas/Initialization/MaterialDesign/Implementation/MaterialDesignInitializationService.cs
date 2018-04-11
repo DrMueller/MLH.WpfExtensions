@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementation
@@ -25,6 +24,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
         {
             var resourceDictionary = _resourceDictionaryFactory.CreateEmpty();
             resourceDictionary.Source = new Uri(sourcePath);
+
             //Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }

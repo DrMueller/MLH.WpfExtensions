@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
+using System.Threading.Tasks;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Views;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
@@ -8,25 +10,31 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
     internal class AppStartService : IAppStartService
     {
         private readonly IMaterialDesignInitializationService _materialDesignInitializationService;
-        private readonly ViewContainer _viewContainer;
+        private readonly ViewModelContainer _viewModelContainer;
         private readonly IViewModelMappingService _viewModelMappingService;
 
         public AppStartService(
-            ViewContainer viewContainer,
+            ViewModelContainer viewModelContainer,
             IViewModelMappingService viewModelMappingService,
             IMaterialDesignInitializationService materialDesignInitializationService)
         {
-            _viewContainer = viewContainer;
+            _viewModelContainer = viewModelContainer;
             _viewModelMappingService = viewModelMappingService;
             _materialDesignInitializationService = materialDesignInitializationService;
         }
 
-        public void StartUp(Assembly rootAssembly)
+        public async Task StartUpAsync(Assembly rootAssembly)
         {
             _materialDesignInitializationService.Initialize();
             _viewModelMappingService.Initialize(rootAssembly);
+            await StartAppAsync();
+        }
 
-            _viewContainer.ShowDialog();
+        private async Task StartAppAsync()
+        {
+            await _viewModelContainer.InitializeAsync();
+            var viewContainer = new ViewContainer { DataContext = _viewModelContainer };
+            viewContainer.ShowDialog();
         }
     }
 }

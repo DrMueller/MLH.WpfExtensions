@@ -1,9 +1,10 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
+﻿using System.Threading.Tasks;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
 {
-    public class NavigationService : INavigationService
+    internal class NavigationService : INavigationService
     {
         private readonly IViewModelFactory _containerViewModelBaseFactory;
         private readonly INavigationConfigurationService _navigationConfigurationService;
@@ -14,16 +15,17 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
             _containerViewModelBaseFactory = containerViewModelBaseFactory;
         }
 
-        public void NavigateTo<T>()
-            where T : INavigatableViewModel
+        public async Task NavigateToAsync<T>()
+            where T : IViewModel
         {
-            var target = _containerViewModelBaseFactory.Create<T>();
-            NavigateTo(target);
+            var target = await _containerViewModelBaseFactory.CreateAsync<T>();
+            await NavigateToAsync(target);
         }
 
-        public void NavigateTo(INavigatableViewModel target)
+        public Task NavigateToAsync(IViewModel target)
         {
             _navigationConfigurationService.NavigationCallback.Invoke(target);
+            return Task.FromResult<object>(null);
         }
     }
 }

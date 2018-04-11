@@ -94,11 +94,15 @@
   <ItemGroup>
     <Compile Include="Areas\ViewModels\AnotherViewModel.cs" />
     <Compile Include="Areas\ViewModels\HomeViewModel.cs" />
+    <Compile Include="Areas\ViewModels\NoMainNavigationViewModel.cs" />
     <Compile Include="Areas\Views\AnotherView.xaml.cs">
       <DependentUpon>AnotherView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Areas\Views\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Views\NoMainNavigationView.xaml.cs">
+      <DependentUpon>NoMainNavigationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\DependencyInjection\WpfTestUiRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Areas\Views\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Areas\Views\NoMainNavigationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

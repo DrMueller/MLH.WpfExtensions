@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\..\..\..\SolutionModeSwitcher\CA_ProductionCode.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -110,16 +111,15 @@
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Implementation\AppearanceService.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithBehaviorBase.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IInitializableViewModel.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\INavigatableViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IMainNavigationViewModel.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithHeading.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Views\IClosableView.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\ViewModelWithErrorInfo.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Models\IInitializableViewModelCommand.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModel.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModelCommand.cs" />
+    <Compile Include="Areas\MvvmShell\Commands\IViewModelCommand.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Models\ViewModelBase.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Models\ViewModelCommand.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModelCommandContainer.cs" />
+    <Compile Include="Areas\MvvmShell\Commands\ViewModelCommand.cs" />
+    <Compile Include="Areas\MvvmShell\Commands\IViewModelCommandContainer.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\ViewModels\ViewModelContainer.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Services\IViewModelFactory.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Services\Implementation\ViewModelFactory.cs" />
@@ -127,8 +127,9 @@
       <DependentUpon>ViewContainer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Areas\MvvmShell\Views\Models\IViewMap.cs" />
-    <Compile Include="Areas\Navigation\Services\IMainNavigationInitializingService.cs" />
-    <Compile Include="Areas\Navigation\Services\Implementation\MainNavigationInitializingService.cs" />
+    <Compile Include="Areas\Navigation\Models\MainNavigationEntry.cs" />
+    <Compile Include="Areas\Navigation\Services\IMainNavigationEntryFactory.cs" />
+    <Compile Include="Areas\Navigation\Services\Implementation\MainNavigationEntryFactory.cs" />
     <Compile Include="Areas\Navigation\Services\Implementation\NavigationConfigurationService.cs" />
     <Compile Include="Areas\Navigation\Services\Implementation\NavigationService.cs" />
     <Compile Include="Areas\Navigation\Services\INavigationConfigurationService.cs" />

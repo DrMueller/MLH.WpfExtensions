@@ -13,6 +13,8 @@ using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Handl
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Handlers.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
+using Mmu.Mlh.WpfExtensions.Areas.Navigation.Services;
+using Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation;
 using StructureMap;
 
 namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
@@ -36,6 +38,9 @@ namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
             For<IMaterialDesignInitializationService>().Use<MaterialDesignInitializationService>();
             For<IDataTemplateFactory>().Use<DataTemplateFactory>();
             For<IViewViewModelMapFactory>().Use<ViewViewModelMapFactory>();
+            For<IMainNavigationEntryFactory>().Use<MainNavigationEntryFactory>();
+            For<INavigationConfigurationService>().Use<NavigationConfigurationService>();
+            For<INavigationService>().Use<NavigationService>();
 
             For<IAppearanceService>().Use<AppearanceService>().Singleton();
             For<IRegistryHandler>().Use<RegistryHandler>();

@@ -1,12 +1,12 @@
 ﻿using System;
-using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services
 {
     public interface INavigationConfigurationService
     {
-        Action<INavigatableViewModel> NavigationCallback { get; }
+        Action<IViewModel> NavigationCallback { get; }
 
-        void Initialize(Action<INavigatableViewModel> navigationCallback);
+        void Initialize(Action<IViewModel> navigationCallback);
     }
 }

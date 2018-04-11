@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Mmu.Mlh.LanguageExtensions.Areas.Reflection;
 using Mmu.Mlh.LanguageExtensions.Areas.Reflection.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Views.Models;
@@ -17,7 +16,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
         //{
         //    _typeReflectionService = typeReflectionService;
         //}
-
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);
 
         public IReadOnlyCollection<ViewViewModelMap> CreateAllMaps(Assembly rootAssembly)
@@ -41,11 +39,11 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
         {
             var tmp = new TypeReflectionService();
 
-           
-            var result = rootAssembly.GetTypes().Where(f =>
-                                                           tmp.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType)
-                && !f.IsInterface
-                && !f.IsAbstract).ToList();
+            var result = rootAssembly.GetTypes().Where(
+                f =>
+                    tmp.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType)
+                    && !f.IsInterface
+                    && !f.IsAbstract).ToList();
             return result;
         }
     }

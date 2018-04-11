@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
@@ -8,16 +10,33 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
 {
     public class ViewModelFactory : IViewModelFactory
     {
-        private readonly IViewModel[] _viewModels;
+        private readonly IProvisioningService _provisioningService;
 
-        public ViewModelFactory(IViewModel[] viewModels)
+        public ViewModelFactory(IProvisioningService provisioningService)
         {
-            _viewModels = viewModels;
+            _provisioningService = provisioningService;
         }
 
-        public T Create<T>() where T : IViewModel => (T)Create(typeof(T));
+        public Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
+        {
+            var behaviorType = typeof(TBehavior);
+            IReadOnlyCollection<TBehavior> result = 
+                _provisioningService
+                .GetAllServices<IViewModel>()
+                .Where(f => behaviorType.IsInstanceOfType(f))
+                .Cast<TBehavior>()
+                .ToList();
 
-        public IViewModel Create(Type viewModelType)
+            return Task.FromResult(result);
+        }
+
+        public async Task<T> CreateAsync<T>() where T : IViewModel
+        {
+            var result = (T)await CreateAsync(typeof(T));
+            return result;
+        }
+
+        public async Task<IViewModel> CreateAsync(Type viewModelType)
         {
             var viewModelBaseType = typeof(IViewModel);
             if (!viewModelBaseType.IsAssignableFrom(viewModelType))
@@ -25,14 +44,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
                 throw new ArgumentException($"{viewModelType.Name} is not assignable from IViewModel.");
             }
 
-            var result = _viewModels.FirstOrDefault(f => f.GetType() == viewModelBaseType);
-            return result;
-        }
+            var result = (IViewModel)_provisioningService.GetService(viewModelType);
+            if (result is IInitializableViewModel initializable)
+            {
+                await initializable.InitializeAsync();
+            }
 
-        public IReadOnlyCollection<TBehavior> CreateAllWithBehavior<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
-        {
-            var behaviorType = typeof(TBehavior);
-            var result = _viewModels.Where(f => behaviorType.IsInstanceOfType(f)).Cast<TBehavior>().ToList();
             return result;
         }
     }

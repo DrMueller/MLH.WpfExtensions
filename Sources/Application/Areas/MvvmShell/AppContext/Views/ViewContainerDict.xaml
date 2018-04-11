@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
                     xmlns:dp="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.DependencyProperties"
-                    xmlns:vms="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models"
+                    xmlns:nav="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.Navigation.Models"
                     xmlns:cnv="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Converters"
                     xmlns:vm="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels">
 
@@ -16,12 +16,6 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
 
-
-    <Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle"
-        BasedOn="{StaticResource {x:Type ListBoxItem}}">
-        <Setter Property="dp:EventCommandBinding.EventName" Value="PreviewMouseLeftButtonDown" />
-        <Setter Property="dp:EventCommandBinding.Command" Value="{Binding Command, Mode=OneWay}" />
-    </Style>
 
     <Style TargetType="TextBlock" x:Key="MainHeaderTextBlock">
         <Setter Property="Panel.ZIndex" Value="-99" />
@@ -50,7 +44,7 @@
                         </PriorityBinding>
                     </TextBlock.Text>
                 </TextBlock>
-                    
+
                 <md:PopupBox
                     HorizontalAlignment="Right"
                     PlacementMode="BottomAndAlignRightEdges"
@@ -79,9 +73,14 @@
         </md:ColorZone>
     </DataTemplate>
 
-    <DataTemplate x:Key="MainNavigation" DataType="{x:Type vms:ViewModelCommand}">
-        <Label Content="{Binding Description}" />
+    <DataTemplate x:Key="MainNavigation" DataType="{x:Type nav:MainNavigationEntry}">
+        <Label Content="{Binding NavigationDescription}" />
     </DataTemplate>
 
+    <Style TargetType="ListBoxItem" x:Key="MainNavigationContainerStyle"
+           BasedOn="{StaticResource {x:Type ListBoxItem}}">
+        <Setter Property="dp:EventCommandBinding.EventName" Value="PreviewMouseLeftButtonDown" />
+        <Setter Property="dp:EventCommandBinding.Command" Value="{Binding NavigationCommand, Mode=OneWay}" />
+    </Style>
 
 </ResourceDictionary>

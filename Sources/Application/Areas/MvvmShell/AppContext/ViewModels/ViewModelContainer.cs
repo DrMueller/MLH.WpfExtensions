@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Views;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
+using Mmu.Mlh.WpfExtensions.Areas.Navigation.Models;
 using Mmu.Mlh.WpfExtensions.Areas.Navigation.Services;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
@@ -14,20 +17,19 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
     public sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IAppearanceService _appearanceService;
-        private readonly IMainNavigationInitializingService _mainNavigationInitializer;
+        private readonly INavigationConfigurationService _navigationConfigurationService;
+        private readonly IMainNavigationEntryFactory _navigationEntryFactory;
         private IViewModel _currentContent;
-        private string _informationText;
         private bool _isMainNavigationPaneOpen;
 
         public ViewModelContainer(
             INavigationConfigurationService navigationConfigurationService,
-            IMainNavigationInitializingService mainNavigationInitializer,
+            IMainNavigationEntryFactory navigationEntryFactory,
             IAppearanceService appearanceService)
         {
-            _mainNavigationInitializer = mainNavigationInitializer;
+            _navigationConfigurationService = navigationConfigurationService;
+            _navigationEntryFactory = navigationEntryFactory;
             _appearanceService = appearanceService;
-            navigationConfigurationService.Initialize(NavigateToViewModelCallback);
-            _mainNavigationInitializer.NavigateToMainEntryPoint();
         }
 
         public static ParametredRelayCommand CloseCommand
@@ -68,24 +70,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
                 }
 
                 _currentContent = value;
-
-                // TODO: Intiialziable
-                // _currentContent.OnInit();
-                OnPropertyChanged();
-            }
-        }
-
-        public string InformationText
-        {
-            get => _informationText;
-            private set
-            {
-                if (_informationText == value)
-                {
-                    return;
-                }
-
-                _informationText = value;
                 OnPropertyChanged();
             }
         }
@@ -105,12 +89,19 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             }
         }
 
-        public IEnumerable<ViewModelCommand> MainNavigationEntries => _mainNavigationInitializer.GetOrderedMainNavigationEntries();
+        public IEnumerable<MainNavigationEntry> NavigationEntries { get; private set; }
 
         public AppearanceTheme SelectedAppearanceTheme
         {
             get => _appearanceService.AppearanceTheme;
             set => _appearanceService.AppearanceTheme = value;
+        }
+
+        public async Task InitializeAsync()
+        {
+            _navigationConfigurationService.Initialize(NavigateToViewModelCallback);
+            NavigationEntries = await _navigationEntryFactory.CreateOrderedEntriesAsync();
+            NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
         }
 
         private void NavigateToViewModelCallback(IViewModel viewModel)

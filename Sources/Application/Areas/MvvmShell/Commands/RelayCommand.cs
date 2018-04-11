@@ -19,10 +19,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
             _action = action;
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute?.Invoke() ?? true;
-        }
+        public bool CanExecute(object parameter) => _canExecute?.Invoke() ?? true;
 
         public void Execute(object parameter)
         {
@@ -31,15 +28,8 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
 
         public event EventHandler CanExecuteChanged
         {
-            add
-            {
-                CommandManager.RequerySuggested += value;
-            }
-
-            remove
-            {
-                CommandManager.RequerySuggested -= value;
-            }
+            add => CommandManager.RequerySuggested += value;
+            remove => CommandManager.RequerySuggested -= value;
         }
     }
 }

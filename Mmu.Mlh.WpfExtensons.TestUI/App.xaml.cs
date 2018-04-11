@@ -1,13 +1,14 @@
 ﻿using System.Windows;
+using Mmu.Mlh.WpfExtensions.Areas.Initialization;
 
 namespace Mmu.Mlh.WpfExtensions.TestUI
 {
     public partial class App : Application
     {
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
             var thisAssembly = typeof(App).Assembly;
-            WpfExtensions.Areas.Initialization.BootstrapService.StartUp(thisAssembly);
+            await BootstrapService.StartUpAsync(thisAssembly);
         }
     }
 }
