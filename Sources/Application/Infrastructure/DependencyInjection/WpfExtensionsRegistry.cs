@@ -1,4 +1,5 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart;
+﻿using System.Diagnostics.CodeAnalysis;
+using Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers;
@@ -21,6 +22,7 @@ namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
 {
     public class WpfExtensionsRegistry : Registry
     {
+        [SuppressMessage("Microsoft.Maintainability", "CA1506:AvoidExcessiveClassCoupling", Justification = "Central registry")]
         public WpfExtensionsRegistry()
         {
             Scan(
@@ -39,8 +41,8 @@ namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
             For<IDataTemplateFactory>().Use<DataTemplateFactory>();
             For<IViewViewModelMapFactory>().Use<ViewViewModelMapFactory>();
             For<IMainNavigationEntryFactory>().Use<MainNavigationEntryFactory>();
-            For<INavigationConfigurationService>().Use<NavigationConfigurationService>();
-            For<INavigationService>().Use<NavigationService>();
+            For<INavigationConfigurationService>().Use<NavigationConfigurationService>().Singleton();
+            For<INavigationService>().Use<NavigationService>().Singleton();
 
             For<IAppearanceService>().Use<AppearanceService>().Singleton();
             For<IRegistryHandler>().Use<RegistryHandler>();

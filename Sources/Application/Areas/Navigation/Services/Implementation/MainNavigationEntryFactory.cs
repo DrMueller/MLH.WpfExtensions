@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
-using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services;
 using Mmu.Mlh.WpfExtensions.Areas.Navigation.Models;
 

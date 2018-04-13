@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Markup;
@@ -6,6 +7,7 @@ using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.Handlers.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class DataTemplateFactory : IDataTemplateFactory
     {
         public DataTemplate CreateWithMapping(ViewViewModelMap map)

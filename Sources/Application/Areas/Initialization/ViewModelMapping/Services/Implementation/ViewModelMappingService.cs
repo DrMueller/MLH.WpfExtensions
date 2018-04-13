@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Windows;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers;
@@ -7,6 +8,7 @@ using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.Handl
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class ViewModelMappingService : IViewModelMappingService
     {
         private readonly IDataTemplateFactory _dataTemplateFactory;

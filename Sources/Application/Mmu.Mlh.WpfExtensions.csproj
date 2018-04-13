@@ -63,6 +63,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -81,8 +82,6 @@
     <Compile Include="Areas\Initialization\MaterialDesign\IMaterialDesignInitializationService.cs" />
     <Compile Include="Areas\Initialization\MaterialDesign\Handlers\IResourceDictionaryFactory.cs" />
     <Compile Include="Areas\Initialization\AppStart\Implementation\AppStartService.cs" />
-    <Compile Include="Areas\Initialization\ViewModelMapping\Models\TypeWithNormalizedName.cs" />
-    <Compile Include="Areas\Initialization\ViewModelMapping\Models\TypeWithNormalizeNameCollection.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Models\ViewModelMap.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\IDataTemplateFactory.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\Implementation\DataTemplateFactory.cs" />
@@ -95,12 +94,20 @@
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Implementation\ViewModelMappingService.cs" />
     <Compile Include="Areas\MvvmShell\Commands\ParametredRelayCommand.cs" />
     <Compile Include="Areas\MvvmShell\Commands\RelayCommand.cs" />
-    <Compile Include="Areas\DependencyProperties\DataGridDoubleClickCommandBinding.cs" />
-    <Compile Include="Areas\DependencyProperties\EventCommandBinding.cs" />
-    <Compile Include="Areas\DependencyProperties\MouseMoveCommandBinding.cs" />
-    <Compile Include="Areas\Dialogs\FileDialogs\Models\FileDialogResult.cs" />
-    <Compile Include="Areas\Dialogs\FileDialogs\Services\IFileDialogService.cs" />
-    <Compile Include="Areas\Dialogs\FileDialogs\Services\Implementation\FileDialogService.cs" />
+    <Compile Include="Areas\Validations\Configuration\Models\PropertyValidationConfiguration.cs" />
+    <Compile Include="Areas\Validations\Configuration\Models\ValidationConfiguration.cs" />
+    <Compile Include="Areas\Validations\Configuration\Services\Implementation\PropertyValidationConfigurationBuilder.cs" />
+    <Compile Include="Areas\Validations\Configuration\Services\Implementation\ValidationConfigurationBuilder.cs" />
+    <Compile Include="Areas\Validations\Configuration\Services\IPropertyValidationConfigurationBuilder.cs" />
+    <Compile Include="Areas\Validations\Configuration\Services\IValidationConfigurationBuilder.cs" />
+    <Compile Include="Areas\Validations\ValidationExpressions\CoreValidationExpressions\StringLengthExpression.cs" />
+    <Compile Include="Areas\Validations\ValidationExpressions\ExpressionFactory.cs" />
+    <Compile Include="Areas\ViewExtensions\DependencyProperties\DataGridDoubleClickCommandBinding.cs" />
+    <Compile Include="Areas\ViewExtensions\DependencyProperties\EventCommandBinding.cs" />
+    <Compile Include="Areas\ViewExtensions\DependencyProperties\MouseMoveCommandBinding.cs" />
+    <Compile Include="Areas\ViewExtensions\Dialogs\FileDialogs\Models\FileDialogResult.cs" />
+    <Compile Include="Areas\ViewExtensions\Dialogs\FileDialogs\Services\IFileDialogService.cs" />
+    <Compile Include="Areas\ViewExtensions\Dialogs\FileDialogs\Services\Implementation\FileDialogService.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\IViewModelMappingService.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Converters\DarkThemeToBooleanConverter.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Converters\LightThemeToBooleanConverter.cs" />
@@ -109,12 +116,12 @@
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Handlers\IRegistryHandler.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\IAppearanceService.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Appearance\Services\Implementation\AppearanceService.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithBehaviorBase.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IInitializableViewModel.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IMainNavigationViewModel.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\IViewModelWithHeading.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\IViewModelWithBehaviorBase.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\IInitializableViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\IMainNavigationViewModel.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\IViewModelWithHeading.cs" />
     <Compile Include="Areas\MvvmShell\AppContext\Views\IClosableView.cs" />
-    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\Shapings\ViewModelWithErrorInfo.cs" />
+    <Compile Include="Areas\MvvmShell\ViewModels\Behaviors\ViewModelWithValidation.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Models\IViewModel.cs" />
     <Compile Include="Areas\MvvmShell\Commands\IViewModelCommand.cs" />
     <Compile Include="Areas\MvvmShell\ViewModels\Models\ViewModelBase.cs" />
@@ -134,13 +141,14 @@
     <Compile Include="Areas\Navigation\Services\Implementation\NavigationService.cs" />
     <Compile Include="Areas\Navigation\Services\INavigationConfigurationService.cs" />
     <Compile Include="Areas\Navigation\Services\INavigationService.cs" />
-    <Compile Include="Areas\Validations\Models\PropertyValidation.cs" />
-    <Compile Include="Areas\Validations\Models\PropertyValidationContainer.cs" />
-    <Compile Include="Areas\Validations\Models\ValidationContainer.cs" />
-    <Compile Include="Areas\Validations\Models\ValidationErrors.cs" />
-    <Compile Include="Areas\Validations\Models\ValidationResult.cs" />
-    <Compile Include="Areas\Validations\ValidationExpressions\CoreValidationExpressions\StringNotNullOrEmptyValidationExpression.cs" />
+    <Compile Include="Areas\Validations\Validation\Models\PropertyValidation.cs" />
+    <Compile Include="Areas\Validations\Validation\Models\ValidationContainer.cs" />
+    <Compile Include="Areas\Validations\Validation\Models\ValidationResult.cs" />
+    <Compile Include="Areas\Validations\ValidationExpressions\CoreValidationExpressions\StringNotNullOrEmptyExpression.cs" />
     <Compile Include="Areas\Validations\ValidationExpressions\IValidationExpression.cs" />
+    <Compile Include="Areas\ViewExtensions\Components\CommandButton.xaml.cs">
+      <DependentUpon>CommandButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Infrastructure\DependencyInjection\WpfExtensionsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -148,9 +156,7 @@
     <None Include="Infrastructure\NuGet\Mmu.Mlh.WpfExtensions.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Areas\Validations\Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Infrastructure\Assets\M.png" />
   </ItemGroup>
@@ -170,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Areas\MvvmShell\AppContext\Views\ViewContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Areas\ViewExtensions\Components\CommandButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,10 +1,11 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
+﻿using System.Threading.Tasks;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
 {
     public interface IViewModelCommandContainer<in TViewModel>
-        where TViewModel : ViewModelBase
+        where TViewModel : IViewModel
     {
-        void Initialize(TViewModel context);
+        Task InitializeAsync(TViewModel context);
     }
 }

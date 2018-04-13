@@ -1,8 +1,10 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using System.Windows.Markup;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class ResourceDictionaryFactory : IResourceDictionaryFactory
     {
         public ResourceDictionary CreateEmpty()

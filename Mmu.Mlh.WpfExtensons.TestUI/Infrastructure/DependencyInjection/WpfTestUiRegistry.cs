@@ -1,4 +1,5 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
+﻿using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 using StructureMap;
 
 namespace Mmu.Mlh.WpfExtensions.TestUI.Infrastructure.DependencyInjection
@@ -12,6 +13,7 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Infrastructure.DependencyInjection
                 {
                     scanner.AssemblyContainingType(typeof(WpfTestUiRegistry));
                     scanner.AddAllTypesOf<IViewModel>();
+                    scanner.AddAllTypesOf(typeof(IViewModelCommandContainer<>));
                     scanner.WithDefaultConventions();
                 });
 

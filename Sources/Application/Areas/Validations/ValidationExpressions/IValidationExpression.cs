@@ -1,4 +1,4 @@
-﻿using Mmu.Mlh.WpfExtensions.Areas.Validations.Models;
+﻿using Mmu.Mlh.WpfExtensions.Areas.Validations.Validation.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Validations.ValidationExpressions
 {

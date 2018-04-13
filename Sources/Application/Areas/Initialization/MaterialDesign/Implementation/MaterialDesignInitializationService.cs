@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class MaterialDesignInitializationService : IMaterialDesignInitializationService
     {
         private readonly IResourceDictionaryFactory _resourceDictionaryFactory;
@@ -24,8 +26,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
         {
             var resourceDictionary = _resourceDictionaryFactory.CreateEmpty();
             resourceDictionary.Source = new Uri(sourcePath);
-
-            //Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }
 }

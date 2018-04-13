@@ -5,6 +5,7 @@ using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Handl
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Implementation
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class AppearanceService : IAppearanceService
     {
         private const string RegistryKeyAppearanceTheme = "AppearanceTheme";

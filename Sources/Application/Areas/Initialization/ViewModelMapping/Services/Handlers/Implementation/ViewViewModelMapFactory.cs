@@ -10,12 +10,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
 {
     internal class ViewViewModelMapFactory : IViewViewModelMapFactory
     {
-        //private readonly ITypeReflectionService _typeReflectionService;
+        ////private readonly ITypeReflectionService _typeReflectionService;
 
-        //public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService)
-        //{
-        //    _typeReflectionService = typeReflectionService;
-        //}
+        ////public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService)
+        ////{
+        ////    _typeReflectionService = typeReflectionService;
+        ////}
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);
 
         public IReadOnlyCollection<ViewViewModelMap> CreateAllMaps(Assembly rootAssembly)
@@ -25,7 +25,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
             return result;
         }
 
-        private ViewViewModelMap CreateFromViewMapType(Type viewMapType)
+        private static ViewViewModelMap CreateFromViewMapType(Type viewMapType)
         {
             var tmp = new TypeReflectionService();
 
@@ -35,7 +35,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
             return new ViewViewModelMap(viewMapType, viewModelType);
         }
 
-        private IEnumerable<Type> GetViewMapTypes(Assembly rootAssembly)
+        private static IEnumerable<Type> GetViewMapTypes(Assembly rootAssembly)
         {
             var tmp = new TypeReflectionService();
 

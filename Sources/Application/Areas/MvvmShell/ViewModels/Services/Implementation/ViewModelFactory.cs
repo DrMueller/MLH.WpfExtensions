@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
-using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors.Shapings;
+using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementation
@@ -17,17 +17,22 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
             _provisioningService = provisioningService;
         }
 
-        public Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
+        public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
         {
             var behaviorType = typeof(TBehavior);
-            IReadOnlyCollection<TBehavior> result = 
+            var viewModelsWithBehaviorType =
                 _provisioningService
-                .GetAllServices<IViewModel>()
-                .Where(f => behaviorType.IsInstanceOfType(f))
-                .Cast<TBehavior>()
-                .ToList();
+                    .GetAllServices<IViewModel>()
+                    .Where(f => behaviorType.IsInstanceOfType(f))
+                    .Select(f => f.GetType())
+                    .ToList();
 
-            return Task.FromResult(result);
+            // We want to use the create method to hook the IInitializableViewModel properly
+            var createTasks = viewModelsWithBehaviorType.Select(CreateAsync);
+            var createdVieModels = await Task.WhenAll(createTasks);
+
+            var result = createdVieModels.Cast<TBehavior>().ToList();
+            return result;
         }
 
         public async Task<T> CreateAsync<T>() where T : IViewModel
