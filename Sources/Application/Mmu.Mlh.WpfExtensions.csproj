@@ -155,7 +155,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Infrastructure\NuGet\Mmu.Mlh.WpfExtensions.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
