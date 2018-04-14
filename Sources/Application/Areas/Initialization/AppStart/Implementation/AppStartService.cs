@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services;
@@ -7,6 +8,7 @@ using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Views;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class AppStartService : IAppStartService
     {
         private readonly IMaterialDesignInitializationService _materialDesignInitializationService;

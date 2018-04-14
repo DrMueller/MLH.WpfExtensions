@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class NavigationService : INavigationService
     {
         private readonly IViewModelFactory _containerViewModelBaseFactory;
