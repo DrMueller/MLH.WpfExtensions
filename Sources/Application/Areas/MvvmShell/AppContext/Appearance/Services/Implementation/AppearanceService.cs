@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using MaterialDesignThemes.Wpf;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Handlers;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Implementation
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class AppearanceService : IAppearanceService
     {
         private const string RegistryKeyAppearanceTheme = "AppearanceTheme";
@@ -37,6 +38,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.I
                 _paletteHelper.SetLightDark(value == AppearanceTheme.Dark);
                 _registryHandler.SaveIntoCurrentUserApplicationRegistry(RegistryKeyAppearanceTheme, value.ToString());
             }
+        }
+
+        public void Initialize()
+        {
+            var currentAppearance = AppearanceTheme;
+            AppearanceTheme = currentAppearance;
         }
     }
 }

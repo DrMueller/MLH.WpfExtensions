@@ -80,6 +80,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Initialization\ApplicationConfiguration.cs" />
     <Compile Include="Areas\Initialization\MaterialDesign\IMaterialDesignInitializationService.cs" />
     <Compile Include="Areas\Initialization\MaterialDesign\Handlers\IResourceDictionaryFactory.cs" />
     <Compile Include="Areas\Initialization\AppStart\Implementation\AppStartService.cs" />

@@ -5,6 +5,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart
 {
     internal interface IAppStartService
     {
-        Task StartUpAsync(Assembly rootAssembly);
+        Task StartUpAsync(Assembly rootAssembly, ApplicationConfiguration appConfig);
     }
 }

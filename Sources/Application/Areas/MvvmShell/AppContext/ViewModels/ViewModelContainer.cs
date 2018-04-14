@@ -100,6 +100,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
         public async Task InitializeAsync()
         {
             _navigationConfigurationService.Initialize(NavigateToViewModelCallback);
+            _appearanceService.Initialize();
             NavigationEntries = await _navigationEntryFactory.CreateOrderedEntriesAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
         }

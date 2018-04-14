@@ -8,11 +8,11 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization
 {
     public static class BootstrapService
     {
-        public static async Task StartUpAsync(Assembly rootAssembly)
+        public static async Task StartUpAsync(Assembly rootAssembly, ApplicationConfiguration appConfig)
         {
             ContainerInitializationService.CreateInitializedContainer(rootAssembly);
             var appStartService = ProvisioningServiceSingleton.Instance.GetService<IAppStartService>();
-            await appStartService.StartUpAsync(rootAssembly);
+            await appStartService.StartUpAsync(rootAssembly, appConfig);
         }
     }
 }
