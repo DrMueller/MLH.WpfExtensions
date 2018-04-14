@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
@@ -8,6 +9,7 @@ using Mmu.Mlh.WpfExtensions.Areas.Navigation.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
 {
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StrctureMap")]
     internal class MainNavigationEntryFactory : IMainNavigationEntryFactory
     {
         private readonly INavigationService _navigationService;
