@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Mmu.Mlh.LanguageExtensions.Areas.Reflection.Implementation;
+using Mmu.Mlh.LanguageExtensions.Areas.Reflection;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Views.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.Handlers.Implementation
 {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class ViewViewModelMapFactory : IViewViewModelMapFactory
     {
-        ////private readonly ITypeReflectionService _typeReflectionService;
-
-        ////public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService)
-        ////{
-        ////    _typeReflectionService = typeReflectionService;
-        ////}
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);
+        private readonly ITypeReflectionService _typeReflectionService;
+
+        public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService)
+        {
+            _typeReflectionService = typeReflectionService;
+        }
 
         public IReadOnlyCollection<ViewViewModelMap> CreateAllMaps(Assembly rootAssembly)
         {
@@ -25,23 +26,19 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
             return result;
         }
 
-        private static ViewViewModelMap CreateFromViewMapType(Type viewMapType)
+        private ViewViewModelMap CreateFromViewMapType(Type viewMapType)
         {
-            var tmp = new TypeReflectionService();
-
-            var mapInterface = viewMapType.GetInterfaces().First(f => tmp.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
+            var mapInterface = viewMapType.GetInterfaces().First(f => _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType));
 
             var viewModelType = mapInterface.GetGenericArguments().First();
             return new ViewViewModelMap(viewMapType, viewModelType);
         }
 
-        private static IEnumerable<Type> GetViewMapTypes(Assembly rootAssembly)
+        private IEnumerable<Type> GetViewMapTypes(Assembly rootAssembly)
         {
-            var tmp = new TypeReflectionService();
-
             var result = rootAssembly.GetTypes().Where(
                 f =>
-                    tmp.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType)
+                    _typeReflectionService.CheckIfTypeIsAssignableToGenericType(f, _viewModelMapType)
                     && !f.IsInterface
                     && !f.IsAbstract).ToList();
             return result;

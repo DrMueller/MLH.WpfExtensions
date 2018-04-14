@@ -26,6 +26,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
         {
             var resourceDictionary = _resourceDictionaryFactory.CreateEmpty();
             resourceDictionary.Source = new Uri(sourcePath);
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }
 }
