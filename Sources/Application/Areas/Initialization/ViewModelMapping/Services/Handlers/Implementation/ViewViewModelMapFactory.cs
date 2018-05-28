@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using Mmu.Mlh.LanguageExtensions.Areas.Reflection;
+using Mmu.Mlh.LanguageExtensions.Areas.Reflection.Services;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Views.Models;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.Handlers.Implementation
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
+    [SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses", Justification = "Instantiated by StructureMap")]
     internal class ViewViewModelMapFactory : IViewViewModelMapFactory
     {
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);

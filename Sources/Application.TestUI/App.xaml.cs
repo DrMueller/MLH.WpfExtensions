@@ -1,7 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization;
 
 namespace Mmu.Mlh.WpfExtensions.TestUI
