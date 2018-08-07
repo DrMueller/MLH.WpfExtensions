@@ -27,7 +27,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
         public Task NavigateToAsync(IViewModel target)
         {
             _navigationConfigurationService.NavigationCallback.Invoke(target);
-            return Task.FromResult<object>(null);
+            return Task.CompletedTask;
         }
     }
 }

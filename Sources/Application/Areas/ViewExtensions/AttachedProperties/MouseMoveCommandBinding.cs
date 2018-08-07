@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.DependencyProperties
+namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
 {
     public static class MouseMoveCommandBinding
     {

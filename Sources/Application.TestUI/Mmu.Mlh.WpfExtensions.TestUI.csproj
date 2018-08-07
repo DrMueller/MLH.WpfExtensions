@@ -66,8 +66,8 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.32.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.32\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.33\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.13.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.13\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
@@ -113,6 +113,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\Controls\ViewModels\ButtonTestsViewModel.cs" />
+    <Compile Include="Areas\Controls\ViewModels\ExpanderTestViewModel.cs" />
+    <Compile Include="Areas\Controls\Views\ButtonTestsView.xaml.cs">
+      <DependentUpon>ButtonTestsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\Controls\Views\ExpanderTestView.xaml.cs">
+      <DependentUpon>ExpanderTestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Home\ViewModels\HomeViewModel.cs" />
     <Compile Include="Areas\Home\ViewModels\NoMainNavigationViewModel.cs" />
     <Compile Include="Areas\Home\ViewModels\ViewModelCommands\HomeViewModelCommands.cs" />
@@ -162,6 +170,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Areas\Controls\Views\ButtonTestsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Areas\Controls\Views\ExpanderTestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Areas\Home\Views\HomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

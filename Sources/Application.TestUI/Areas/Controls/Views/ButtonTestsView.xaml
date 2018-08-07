@@ -1,22 +1,26 @@
-﻿<UserControl x:Class="Mmu.Mlh.WpfExtensions.TestUI.Areas.Home.Views.HomeView"
+﻿<UserControl x:Class="Mmu.Mlh.WpfExtensions.TestUI.Areas.Controls.Views.ButtonTestsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:commandButtons="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandButtons;assembly=Mmu.Mlh.WpfExtensions"
+             xmlns:loadingButtonExtensions="clr-namespace:Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties.LoadingButtonExtensions;assembly=Mmu.Mlh.WpfExtensions"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal">
-            <commandButtons:CommandButton ViewModelCommand="{Binding NavigateToNoMainNavigation, Mode=OneWay}" />
+            <Button
+                Name="TestButton"
+                loadingButtonExtensions:LoadingButtonExtension.ShowLoading="{Binding ShowLoading, Mode=TwoWay}"
+                Command="{Binding DoLoadCommand}"
+                Height="50"
+                Width="150"
+                Content="Do Load!"/>
         </StackPanel>
-
-        <Label Grid.Row="1">Hello World</Label>
-
     </Grid>
 </UserControl>

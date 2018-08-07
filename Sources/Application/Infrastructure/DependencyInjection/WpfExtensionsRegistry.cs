@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.Services.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
@@ -45,6 +47,7 @@ namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
             For<INavigationService>().Use<NavigationService>().Singleton();
 
             For<IAppearanceService>().Use<AppearanceService>().Singleton();
+            For<IInformationSubscriptionViewService>().Use<InformationSubscriptionViewService>();
             For<IRegistryHandler>().Use<RegistryHandler>();
         }
     }

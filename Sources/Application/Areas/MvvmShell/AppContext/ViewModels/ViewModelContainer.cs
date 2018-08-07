@@ -4,6 +4,10 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
+using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.Services;
+using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.ViewData;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Models;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Views;
@@ -17,19 +21,39 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
     public sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IAppearanceService _appearanceService;
+
+        private readonly IInformationSubscriptionViewService _informationSubscriptionViewService;
+
         private readonly INavigationConfigurationService _navigationConfigurationService;
+
         private readonly IMainNavigationEntryFactory _navigationEntryFactory;
+
         private IViewModel _currentContent;
+
         private bool _isMainNavigationPaneOpen;
+
+        private InformationEntryViewData _informationEntry;
 
         public ViewModelContainer(
             INavigationConfigurationService navigationConfigurationService,
             IMainNavigationEntryFactory navigationEntryFactory,
-            IAppearanceService appearanceService)
+            IAppearanceService appearanceService,
+            IInformationSubscriptionViewService informationSubscriptionViewService)
         {
             _navigationConfigurationService = navigationConfigurationService;
             _navigationEntryFactory = navigationEntryFactory;
             _appearanceService = appearanceService;
+            _informationSubscriptionViewService = informationSubscriptionViewService;
+        }
+
+        public InformationEntryViewData InformationEntry
+        {
+            get => _informationEntry;
+            set
+            {
+                _informationEntry = value;
+                OnPropertyChanged();
+            }
         }
 
         public static ParametredRelayCommand CloseCommand
@@ -100,9 +124,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
         public async Task InitializeAsync()
         {
             _navigationConfigurationService.Initialize(NavigateToViewModelCallback);
+            _informationSubscriptionViewService.RegisterSubscriber(InformationReceivedCallback);
             _appearanceService.Initialize();
             NavigationEntries = await _navigationEntryFactory.CreateOrderedEntriesAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
+        }
+
+        public void InformationReceivedCallback(InformationEntryViewData informationEntry)
+        {
+            InformationEntry = informationEntry;
         }
 
         private void NavigateToViewModelCallback(IViewModel viewModel)

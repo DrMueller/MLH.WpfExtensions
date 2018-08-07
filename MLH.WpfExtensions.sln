@@ -16,6 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configura
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mmu.Mlh.WpfExtensions.TestUI", "Sources\Application.TestUI\Mmu.Mlh.WpfExtensions.TestUI.csproj", "{FEC97561-6EFD-4950-A227-FEF38ABBC8D5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DD0AE305-FEBA-498F-8018-B0E36CCB6131}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\Users\matthias.mueller\Desktop\tea.txt = ..\..\..\..\Users\matthias.mueller\Desktop\tea.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

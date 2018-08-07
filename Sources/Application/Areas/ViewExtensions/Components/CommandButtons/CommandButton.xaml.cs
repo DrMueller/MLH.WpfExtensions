@@ -2,13 +2,13 @@
 using System.Windows.Controls;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands;
 
-namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components
+namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandButtons
 {
     public partial class CommandButton : UserControl
     {
         public static readonly DependencyProperty ViewModelCommandProperty =
-            DependencyProperty.RegisterAttached(
-                "ViewModelCommand",
+            DependencyProperty.Register(
+                nameof(ViewModelCommand),
                 typeof(ViewModelCommand),
                 typeof(CommandButton),
                 new PropertyMetadata(null, null));
