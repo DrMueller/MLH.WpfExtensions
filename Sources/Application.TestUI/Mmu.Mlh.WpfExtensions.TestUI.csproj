@@ -66,11 +66,11 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.33\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.34.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.34\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.13\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.14\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -130,6 +130,11 @@
     <Compile Include="Areas\Home\Views\NoMainNavigationView.xaml.cs">
       <DependentUpon>NoMainNavigationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Areas\InformationHandling\ViewModels\TestInformationViewModel.cs" />
+    <Compile Include="Areas\InformationHandling\ViewModels\ViewModelCommands\TestInformationViewModelCommands.cs" />
+    <Compile Include="Areas\InformationHandling\Views\TestInformationView.xaml.cs">
+      <DependentUpon>TestInformationView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Areas\ValidationTests\ViewModels\SimpleValidationViewModel.cs" />
     <Compile Include="Areas\ValidationTests\ViewModels\ViewModelCommands\SimpleValidationViewModelCommands.cs" />
     <Compile Include="Areas\ValidationTests\View\SimpleValidationView.xaml.cs">
@@ -186,6 +191,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Areas\InformationHandling\Views\TestInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Areas\ValidationTests\View\SimpleValidationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,6 +225,7 @@
   <ItemGroup>
     <Resource Include="Infrastructure\Assets\M.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

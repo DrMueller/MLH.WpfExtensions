@@ -47,11 +47,11 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.33\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.34.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.34\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.13\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.LanguageExtensions, Version=1.2.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.1.2.14\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -118,6 +118,10 @@
     <Compile Include="Areas\ViewExtensions\AttachedProperties\DataGridDoubleClickCommandBinding.cs" />
     <Compile Include="Areas\ViewExtensions\AttachedProperties\EventCommandBinding.cs" />
     <Compile Include="Areas\ViewExtensions\AttachedProperties\MouseMoveCommandBinding.cs" />
+    <Compile Include="Areas\ViewExtensions\Components\CommandBars\Components\CommandBar.xaml.cs">
+      <DependentUpon>CommandBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Areas\ViewExtensions\Components\CommandBars\ViewData\CommandsViewData.cs" />
     <Compile Include="Areas\ViewExtensions\Components\Expanders\HeaderedExpander.xaml.cs">
       <DependentUpon>HeaderedExpander.xaml</DependentUpon>
     </Compile>
@@ -202,6 +206,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Areas\MvvmShell\AppContext\Views\ViewContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Areas\ViewExtensions\Components\CommandBars\Components\CommandBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
