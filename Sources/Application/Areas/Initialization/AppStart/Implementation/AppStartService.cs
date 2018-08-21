@@ -1,6 +1,8 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Threading.Tasks;
+using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels;
@@ -12,7 +14,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
     internal class AppStartService : IAppStartService
     {
         private readonly IMaterialDesignInitializationService _materialDesignInitializationService;
+
         private readonly ViewModelContainer _viewModelContainer;
+
         private readonly IViewModelMappingService _viewModelMappingService;
 
         public AppStartService(
@@ -25,10 +29,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
             _materialDesignInitializationService = materialDesignInitializationService;
         }
 
-        public async Task StartUpAsync(Assembly rootAssembly, ApplicationConfiguration appConfig)
+        public async Task StartUpAsync(
+            Assembly rootAssembly,
+            ApplicationConfiguration appConfig,
+            Maybe<Action> appInitializedCallbackMaybe)
         {
             _materialDesignInitializationService.Initialize();
             _viewModelMappingService.Initialize(rootAssembly);
+            appInitializedCallbackMaybe.Evaluate(cb => cb());
+
             await StartAppAsync(appConfig);
         }
 

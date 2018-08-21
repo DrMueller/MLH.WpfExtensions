@@ -10,13 +10,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.I
     internal class AppearanceService : IAppearanceService
     {
         private const string RegistryKeyAppearanceTheme = "AppearanceTheme";
+
         private static readonly PaletteHelper _paletteHelper = new PaletteHelper();
+
         private readonly IRegistryHandler _registryHandler;
 
-        public AppearanceService(IRegistryHandler registryHandler)
-        {
-            _registryHandler = registryHandler;
-        }
+        public AppearanceService(IRegistryHandler registryHandler) => _registryHandler = registryHandler;
 
         public AppearanceTheme AppearanceTheme
         {

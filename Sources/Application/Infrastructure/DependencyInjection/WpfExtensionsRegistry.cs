@@ -18,6 +18,10 @@ using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Services.Imple
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 using Mmu.Mlh.WpfExtensions.Areas.Navigation.Services;
 using Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Dialogs.FileDialogs.Services;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Dialogs.FileDialogs.Services.Implementation;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Dialogs.FolderDialogs.Services;
+using Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Dialogs.FolderDialogs.Services.Implementation;
 using StructureMap;
 
 namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
@@ -35,20 +39,29 @@ namespace Mmu.Mlh.WpfExtensions.Infrastructure.DependencyInjection
                     scanner.WithDefaultConventions();
                 });
 
+            // Appearance
+            For<IAppearanceService>().Use<AppearanceService>().Singleton();
+            For<IRegistryHandler>().Use<RegistryHandler>();
+
+            // AppStart
             For<IAppStartService>().Use<AppStartService>();
             For<IViewModelMappingService>().Use<ViewModelMappingService>();
-
             For<IResourceDictionaryFactory>().Use<ResourceDictionaryFactory>();
             For<IMaterialDesignInitializationService>().Use<MaterialDesignInitializationService>();
             For<IDataTemplateFactory>().Use<DataTemplateFactory>();
             For<IViewViewModelMapFactory>().Use<ViewViewModelMapFactory>();
+
+            // Dialogs
+            For<IFileDialogService>().Use<FileDialogService>();
+            For<IFolderDialogService>().Use<FolderDialogService>();
+
+            // Information handling
+            For<IInformationSubscriptionViewService>().Use<InformationSubscriptionViewService>();
+
+            // Navigation
             For<IMainNavigationEntryFactory>().Use<MainNavigationEntryFactory>();
             For<INavigationConfigurationService>().Use<NavigationConfigurationService>().Singleton();
             For<INavigationService>().Use<NavigationService>().Singleton();
-
-            For<IAppearanceService>().Use<AppearanceService>().Singleton();
-            For<IInformationSubscriptionViewService>().Use<InformationSubscriptionViewService>();
-            For<IRegistryHandler>().Use<RegistryHandler>();
         }
     }
 }

@@ -11,13 +11,12 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.ValidationTests.ViewModels
     public class SimpleValidationViewModel : ViewModelWithValidation, IMainNavigationViewModel, IViewModelWithHeading
     {
         private readonly SimpleValidationViewModelCommands _commands;
+
         private DateTime _birthDate;
+
         private string _firstName;
 
-        public SimpleValidationViewModel(SimpleValidationViewModelCommands commands)
-        {
-            _commands = commands;
-        }
+        public SimpleValidationViewModel(SimpleValidationViewModelCommands commands) => _commands = commands;
 
         public DateTime BirthDate
         {

@@ -6,6 +6,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
     public class ParametredRelayCommand : ICommand
     {
         private readonly Action<object> _action;
+
         private readonly Func<bool> _canExecute;
 
         public ParametredRelayCommand(Action<object> action)

@@ -8,10 +8,7 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.Home.ViewModels.ViewModelCommands
     {
         private readonly INavigationService _navigationService;
 
-        public HomeViewModelCommands(INavigationService navigationService)
-        {
-            _navigationService = navigationService;
-        }
+        public HomeViewModelCommands(INavigationService navigationService) => _navigationService = navigationService;
 
         public ViewModelCommand NavigateToNoMainNavigation { get; private set; }
 

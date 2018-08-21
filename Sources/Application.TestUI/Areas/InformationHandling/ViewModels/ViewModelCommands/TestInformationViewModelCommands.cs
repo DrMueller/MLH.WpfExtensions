@@ -34,9 +34,6 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.InformationHandling.ViewModels.View
             }
         }
 
-        public Task InitializeAsync(TestInformationViewModel context)
-        {
-            return Task.CompletedTask;
-        }
+        public Task InitializeAsync(TestInformationViewModel context) => Task.CompletedTask;
     }
 }

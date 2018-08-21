@@ -8,6 +8,7 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.Controls.ViewModels
     public class ExpanderTestViewModel : ViewModelBase, IMainNavigationViewModel, IViewModelWithHeading
     {
         private bool _isExpanderExpanded;
+
         public string HeadingText { get; } = "Expander Test";
 
         public bool IsExpanderExpanded

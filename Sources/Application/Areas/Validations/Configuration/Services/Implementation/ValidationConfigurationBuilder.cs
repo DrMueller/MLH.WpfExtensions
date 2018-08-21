@@ -10,10 +10,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Services.Impleme
     {
         private readonly ValidationConfiguration _validationConfiguration;
 
-        public ValidationConfigurationBuilder()
-        {
-            _validationConfiguration = new ValidationConfiguration();
-        }
+        public ValidationConfigurationBuilder() => _validationConfiguration = new ValidationConfiguration();
 
         internal ValidationContainer BuildContainer(
             EventHandler<DataErrorsChangedEventArgs> errorsChanged,

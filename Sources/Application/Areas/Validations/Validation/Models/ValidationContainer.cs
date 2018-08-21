@@ -10,7 +10,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Validation.Models
     public class ValidationContainer
     {
         private readonly IDictionary<string, PropertyValidation> _entries;
+
         private EventHandler<DataErrorsChangedEventArgs> _errorsChanged;
+
         private IViewModel _viewModel;
 
         internal ValidationContainer(

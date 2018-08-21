@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
 using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.ViewData;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.InformationHandling.Components

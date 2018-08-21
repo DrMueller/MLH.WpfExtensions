@@ -11,6 +11,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(ICommand),
                 typeof(MouseMoveCommandBinding),
                 new PropertyMetadata(null, MouseMoveCommandPropertyChangedCallback));
+
         public static readonly DependencyProperty MouseMoveCommandParameterProperty =
             DependencyProperty.RegisterAttached(
                 "MouseMoveCommandParameter",

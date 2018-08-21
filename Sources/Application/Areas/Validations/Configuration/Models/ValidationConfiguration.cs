@@ -8,10 +8,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Models
     {
         private IList<PropertyValidationConfiguration> _propertyValidationConfigurations;
 
-        public ValidationConfiguration()
-        {
-            _propertyValidationConfigurations = new List<PropertyValidationConfiguration>();
-        }
+        public ValidationConfiguration() => _propertyValidationConfigurations = new List<PropertyValidationConfiguration>();
 
         public void Add(PropertyValidationConfiguration config)
         {

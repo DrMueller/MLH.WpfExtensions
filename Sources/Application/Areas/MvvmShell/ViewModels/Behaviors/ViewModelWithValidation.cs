@@ -13,6 +13,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors
     public abstract class ViewModelWithValidation : ViewModelBase, INotifyDataErrorInfo, IInitializableViewModel
     {
         private ValidationContainer _validationContainer;
+
         public bool HasErrors => _validationContainer.HasErrors;
 
         public IEnumerable GetErrors(string propertyName) => _validationContainer.GetErrorMessages(propertyName);

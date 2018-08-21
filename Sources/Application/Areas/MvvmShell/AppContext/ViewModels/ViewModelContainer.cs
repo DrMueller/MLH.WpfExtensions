@@ -4,8 +4,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Models;
-using Mmu.Mlh.ApplicationExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.Services;
 using Mmu.Mlh.WpfExtensions.Areas.InformationHandling.ViewData;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.Appearance.Models;
@@ -30,9 +28,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
 
         private IViewModel _currentContent;
 
-        private bool _isMainNavigationPaneOpen;
-
         private InformationEntryViewData _informationEntry;
+
+        private bool _isMainNavigationPaneOpen;
 
         public ViewModelContainer(
             INavigationConfigurationService navigationConfigurationService,
@@ -44,16 +42,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             _navigationEntryFactory = navigationEntryFactory;
             _appearanceService = appearanceService;
             _informationSubscriptionViewService = informationSubscriptionViewService;
-        }
-
-        public InformationEntryViewData InformationEntry
-        {
-            get => _informationEntry;
-            set
-            {
-                _informationEntry = value;
-                OnPropertyChanged();
-            }
         }
 
         public static ParametredRelayCommand CloseCommand
@@ -98,6 +86,16 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             }
         }
 
+        public InformationEntryViewData InformationEntry
+        {
+            get => _informationEntry;
+            set
+            {
+                _informationEntry = value;
+                OnPropertyChanged();
+            }
+        }
+
         public bool IsMainNavigationPaneOpen
         {
             get => _isMainNavigationPaneOpen;
@@ -121,6 +119,11 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             set => _appearanceService.AppearanceTheme = value;
         }
 
+        public void InformationReceivedCallback(InformationEntryViewData informationEntry)
+        {
+            InformationEntry = informationEntry;
+        }
+
         public async Task InitializeAsync()
         {
             _navigationConfigurationService.Initialize(NavigateToViewModelCallback);
@@ -128,11 +131,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             _appearanceService.Initialize();
             NavigationEntries = await _navigationEntryFactory.CreateOrderedEntriesAsync();
             NavigationEntries.FirstOrDefault()?.NavigationCommand.Execute(null);
-        }
-
-        public void InformationReceivedCallback(InformationEntryViewData informationEntry)
-        {
-            InformationEntry = informationEntry;
         }
 
         private void NavigateToViewModelCallback(IViewModel viewModel)

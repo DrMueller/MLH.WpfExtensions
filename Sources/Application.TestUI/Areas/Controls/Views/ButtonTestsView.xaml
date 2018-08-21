@@ -20,7 +20,7 @@
                 Command="{Binding DoLoadCommand}"
                 Height="50"
                 Width="150"
-                Content="Do Load!"/>
+                Content="Do Load!" />
         </StackPanel>
     </Grid>
 </UserControl>

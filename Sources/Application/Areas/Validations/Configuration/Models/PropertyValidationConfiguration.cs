@@ -8,6 +8,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Models
     public class PropertyValidationConfiguration
     {
         private readonly List<IValidationExpression> _expressions;
+
         private readonly string _propertyName;
 
         public PropertyValidationConfiguration(string propertyName)

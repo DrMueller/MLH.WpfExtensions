@@ -6,6 +6,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
     public class RelayCommand : ICommand
     {
         private readonly Action _action;
+
         private readonly Func<bool> _canExecute;
 
         public RelayCommand(Action action)

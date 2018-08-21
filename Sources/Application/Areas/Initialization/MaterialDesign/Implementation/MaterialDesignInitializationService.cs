@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Handlers;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementation
@@ -9,10 +10,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
     {
         private readonly IResourceDictionaryFactory _resourceDictionaryFactory;
 
-        public MaterialDesignInitializationService(IResourceDictionaryFactory resourceDictionaryFactory)
-        {
-            _resourceDictionaryFactory = resourceDictionaryFactory;
-        }
+        public MaterialDesignInitializationService(IResourceDictionaryFactory resourceDictionaryFactory) => _resourceDictionaryFactory = resourceDictionaryFactory;
 
         public void Initialize()
         {
@@ -26,7 +24,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
         {
             var resourceDictionary = _resourceDictionaryFactory.CreateEmpty();
             resourceDictionary.Source = new Uri(sourcePath);
-            System.Windows.Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
         }
     }
 }

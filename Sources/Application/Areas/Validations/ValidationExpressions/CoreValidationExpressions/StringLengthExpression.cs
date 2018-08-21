@@ -5,6 +5,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.ValidationExpressions.CoreVali
     public class StringLengthExpression : IValidationExpression
     {
         private readonly int _maxLength;
+
         private readonly int _minLength;
 
         public StringLengthExpression(int minLength, int maxLength)

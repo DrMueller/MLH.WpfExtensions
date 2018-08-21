@@ -14,12 +14,14 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(string),
                 typeof(EventCommandBinding),
                 new PropertyMetadata(null, null));
+
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.RegisterAttached(
                 "Command",
                 typeof(ICommand),
                 typeof(EventCommandBinding),
                 new PropertyMetadata(null, CommandPropertyChangedCallback));
+
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.RegisterAttached(
                 "CommandParameter",

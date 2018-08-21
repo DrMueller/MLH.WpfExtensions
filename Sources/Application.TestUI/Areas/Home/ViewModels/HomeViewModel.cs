@@ -10,10 +10,7 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.Home.ViewModels
     {
         private readonly HomeViewModelCommands _viewModelCommands;
 
-        public HomeViewModel(HomeViewModelCommands viewModelCommands)
-        {
-            _viewModelCommands = viewModelCommands;
-        }
+        public HomeViewModel(HomeViewModelCommands viewModelCommands) => _viewModelCommands = viewModelCommands;
 
         public string HeadingText { get; } = "Hello Home";
         public ViewModelCommand NavigateToNoMainNavigation => _viewModelCommands.NavigateToNoMainNavigation;
