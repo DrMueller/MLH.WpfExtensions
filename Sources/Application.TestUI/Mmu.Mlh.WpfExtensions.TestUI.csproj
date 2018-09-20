@@ -66,8 +66,8 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=1.0.37.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.1.0.37\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
+    <Reference Include="Mmu.Mlh.ApplicationExtensions, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Mmu.Mlh.ApplicationExtensions.2.0.3\lib\netstandard2.0\Mmu.Mlh.ApplicationExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Mmu.Mlh.LanguageExtensions, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Mmu.Mlh.LanguageExtensions.2.0.1\lib\netstandard2.0\Mmu.Mlh.LanguageExtensions.dll</HintPath>
