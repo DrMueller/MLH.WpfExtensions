@@ -8,7 +8,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties.LoadingB
     {
         private static Lazy<Image> _lazyLoadingImageTemplate = new Lazy<Image>(CreateNewLoadingImage);
 
-        internal static Image CreateLoadingImage() => _lazyLoadingImageTemplate.Value;
+        internal static Image CreateLoadingImage()
+        {
+            return _lazyLoadingImageTemplate.Value;
+        }
 
         private static Image CreateNewLoadingImage()
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Threading.Tasks;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 
 namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart
 {

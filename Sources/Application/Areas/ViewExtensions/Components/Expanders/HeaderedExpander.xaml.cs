@@ -10,25 +10,18 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.Expanders
                 typeof(object),
                 typeof(HeaderedExpander),
                 new PropertyMetadata(null, null));
-
         public static readonly DependencyProperty HeaderContentProperty =
             DependencyProperty.Register(
                 nameof(HeaderContent),
                 typeof(object),
                 typeof(HeaderedExpander),
                 new PropertyMetadata(null, null));
-
         public static readonly DependencyProperty IsExpandedProperty =
             DependencyProperty.Register(
                 nameof(IsExpanded),
                 typeof(bool),
                 typeof(HeaderedExpander),
                 new PropertyMetadata(true, null));
-
-        public HeaderedExpander()
-        {
-            InitializeComponent();
-        }
 
         public object BodyContent
         {
@@ -46,6 +39,11 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.Expanders
         {
             get => (bool)GetValue(IsExpandedProperty);
             set => SetValue(IsExpandedProperty, value);
+        }
+
+        public HeaderedExpander()
+        {
+            InitializeComponent();
         }
     }
 }

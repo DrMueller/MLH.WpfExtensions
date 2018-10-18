@@ -25,7 +25,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
             }
         }
 
-        public static ICommand GetDataGridDoubleClickCommand(DependencyObject dependencyObject) => (ICommand)dependencyObject.GetValue(DataGridDoubleClickProperty);
+        public static ICommand GetDataGridDoubleClickCommand(DependencyObject dependencyObject)
+        {
+            return (ICommand)dependencyObject.GetValue(DataGridDoubleClickProperty);
+        }
 
         public static void SetDataGridDoubleClickCommand(DependencyObject dependencyObject, ICommand value)
         {

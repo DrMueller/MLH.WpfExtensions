@@ -2,17 +2,23 @@
 {
     public class ValidationResult
     {
+        public string ErrorMessage { get; }
+        public bool IsValid { get; }
+
         public ValidationResult(bool isValid, string errorMessage)
         {
             IsValid = isValid;
             ErrorMessage = errorMessage;
         }
 
-        public string ErrorMessage { get; }
-        public bool IsValid { get; }
+        public static ValidationResult CreateInvalid(string errorMessage)
+        {
+            return new ValidationResult(false, errorMessage);
+        }
 
-        public static ValidationResult CreateInvalid(string errorMessage) => new ValidationResult(false, errorMessage);
-
-        public static ValidationResult CreateValid() => new ValidationResult(true, string.Empty);
+        public static ValidationResult CreateValid()
+        {
+            return new ValidationResult(true, string.Empty);
+        }
     }
 }

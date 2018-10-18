@@ -6,7 +6,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Services.Impleme
     public class PropertyValidationConfigurationBuilder : IPropertyValidationConfigurationBuilder
     {
         private readonly PropertyValidationConfiguration _propertyValidationConfig;
-
         private readonly IValidationConfigurationBuilder _validationConfigBuilder;
 
         internal PropertyValidationConfigurationBuilder(
@@ -23,6 +22,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Services.Impleme
             return this;
         }
 
-        public IValidationConfigurationBuilder BuildPropertyValidation() => _validationConfigBuilder;
+        public IValidationConfigurationBuilder BuildPropertyValidation()
+        {
+            return _validationConfigBuilder;
+        }
     }
 }

@@ -5,6 +5,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Models
 {
     public class MainNavigationEntry
     {
+        public ICommand NavigationCommand { get; }
+        public string NavigationDescription { get; }
+
         public MainNavigationEntry(ICommand navigationCommand, string navigationDescription)
         {
             Guard.ObjectNotNull(() => navigationCommand);
@@ -13,8 +16,5 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Models
             NavigationCommand = navigationCommand;
             NavigationDescription = navigationDescription;
         }
-
-        public ICommand NavigationCommand { get; }
-        public string NavigationDescription { get; }
     }
 }

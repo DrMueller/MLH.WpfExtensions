@@ -13,15 +13,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandButtons
                 typeof(CommandButton),
                 new PropertyMetadata(null, null));
 
-        public CommandButton()
-        {
-            InitializeComponent();
-        }
-
         public ViewModelCommand ViewModelCommand
         {
             get => (ViewModelCommand)GetValue(ViewModelCommandProperty);
             set => SetValue(ViewModelCommandProperty, value);
+        }
+
+        public CommandButton()
+        {
+            InitializeComponent();
         }
     }
 }

@@ -6,7 +6,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
     public class RelayCommand : ICommand
     {
         private readonly Action _action;
-
         private readonly Func<bool> _canExecute;
 
         public RelayCommand(Action action)
@@ -20,7 +19,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
             _action = action;
         }
 
-        public bool CanExecute(object parameter) => _canExecute?.Invoke() ?? true;
+        public bool CanExecute(object parameter)
+        {
+            return _canExecute?.Invoke() ?? true;
+        }
 
         public void Execute(object parameter)
         {

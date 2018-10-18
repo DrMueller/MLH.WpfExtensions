@@ -16,15 +16,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandBars.Comp
                 typeof(CommandBar),
                 new PropertyMetadata(null, null));
 
-        public CommandBar()
-        {
-            InitializeComponent();
-        }
-
         public CommandsViewData Commands
         {
             get => (CommandsViewData)GetValue(CommandsProperty);
             set => SetValue(CommandsProperty, value);
+        }
+
+        public CommandBar()
+        {
+            InitializeComponent();
         }
     }
 }

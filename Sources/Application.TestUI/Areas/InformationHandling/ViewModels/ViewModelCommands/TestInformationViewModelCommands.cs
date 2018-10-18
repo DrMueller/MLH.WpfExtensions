@@ -11,8 +11,6 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.InformationHandling.ViewModels.View
     {
         private readonly IInformationPublishingService _informationPublishingService;
 
-        public TestInformationViewModelCommands(IInformationPublishingService informationPublishingService) => _informationPublishingService = informationPublishingService;
-
         public CommandsViewData Commands
         {
             get
@@ -34,6 +32,14 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.InformationHandling.ViewModels.View
             }
         }
 
-        public Task InitializeAsync(TestInformationViewModel context) => Task.CompletedTask;
+        public TestInformationViewModelCommands(IInformationPublishingService informationPublishingService)
+        {
+            _informationPublishingService = informationPublishingService;
+        }
+
+        public Task InitializeAsync(TestInformationViewModel context)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

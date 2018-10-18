@@ -13,10 +13,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors
     public abstract class ViewModelWithValidation : ViewModelBase, INotifyDataErrorInfo, IInitializableViewModel
     {
         private ValidationContainer _validationContainer;
-
         public bool HasErrors => _validationContainer.HasErrors;
 
-        public IEnumerable GetErrors(string propertyName) => _validationContainer.GetErrorMessages(propertyName);
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return _validationContainer.GetErrorMessages(propertyName);
+        }
 
         public async Task InitializeAsync()
         {
@@ -26,7 +28,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors
 
         protected abstract void ConfigureValidation(IValidationConfigurationBuilder builder);
 
-        protected virtual Task InitializeAsnc() => Task.FromResult<object>(null);
+        protected virtual Task InitializeAsnc()
+        {
+            return Task.FromResult<object>(null);
+        }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

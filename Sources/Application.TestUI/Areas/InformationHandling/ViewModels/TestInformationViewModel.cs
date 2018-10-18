@@ -9,13 +9,15 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.InformationHandling.ViewModels
     public class TestInformationViewModel : ViewModelBase, IMainNavigationViewModel, IViewModelWithHeading, IInitializableViewModel
     {
         private readonly TestInformationViewModelCommands _commandsContainer;
-
-        public TestInformationViewModel(TestInformationViewModelCommands commandsContainer) => _commandsContainer = commandsContainer;
-
         public CommandsViewData Commands => _commandsContainer.Commands;
         public string HeadingText { get; } = "Information testing";
         public string NavigationDescription { get; } = "Information";
         public int NavigationSequence { get; } = 2;
+
+        public TestInformationViewModel(TestInformationViewModelCommands commandsContainer)
+        {
+            _commandsContainer = commandsContainer;
+        }
 
         public async Task InitializeAsync()
         {

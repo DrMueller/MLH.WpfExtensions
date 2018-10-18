@@ -4,8 +4,14 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.ValidationExpressions
 {
     public static class ExpressionFactory
     {
-        public static StringLengthExpression StringLength(int minLength, int maxLength) => new StringLengthExpression(minLength, maxLength);
+        public static StringLengthExpression StringLength(int minLength, int maxLength)
+        {
+            return new StringLengthExpression(minLength, maxLength);
+        }
 
-        public static StringNotNullOrEmptyExpression StringNotNullOrEmpty() => new StringNotNullOrEmptyExpression();
+        public static StringNotNullOrEmptyExpression StringNotNullOrEmpty()
+        {
+            return new StringNotNullOrEmptyExpression();
+        }
     }
 }

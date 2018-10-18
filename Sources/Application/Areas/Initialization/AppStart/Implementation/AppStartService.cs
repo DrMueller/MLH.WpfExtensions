@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Threading.Tasks;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels;
@@ -14,9 +14,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.AppStart.Implementation
     internal class AppStartService : IAppStartService
     {
         private readonly IMaterialDesignInitializationService _materialDesignInitializationService;
-
         private readonly ViewModelContainer _viewModelContainer;
-
         private readonly IViewModelMappingService _viewModelMappingService;
 
         public AppStartService(

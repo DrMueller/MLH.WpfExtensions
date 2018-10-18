@@ -8,7 +8,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Models
     public class PropertyValidationConfiguration
     {
         private readonly List<IValidationExpression> _expressions;
-
         private readonly string _propertyName;
 
         public PropertyValidationConfiguration(string propertyName)
@@ -23,6 +22,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Models
             _expressions.Add(expression);
         }
 
-        internal PropertyValidation BuildPropertyValidation() => new PropertyValidation(_propertyName, _expressions);
+        internal PropertyValidation BuildPropertyValidation()
+        {
+            return new PropertyValidation(_propertyName, _expressions);
+        }
     }
 }

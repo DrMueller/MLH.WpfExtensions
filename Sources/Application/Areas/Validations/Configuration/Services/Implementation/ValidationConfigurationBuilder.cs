@@ -10,7 +10,18 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Services.Impleme
     {
         private readonly ValidationConfiguration _validationConfiguration;
 
-        public ValidationConfigurationBuilder() => _validationConfiguration = new ValidationConfiguration();
+        public ValidationConfigurationBuilder()
+        {
+            _validationConfiguration = new ValidationConfiguration();
+        }
+
+        public IPropertyValidationConfigurationBuilder ForProperty(string propertyName)
+        {
+            var propConfig = new PropertyValidationConfiguration(propertyName);
+            _validationConfiguration.Add(propConfig);
+            var builder = new PropertyValidationConfigurationBuilder(this, propConfig);
+            return builder;
+        }
 
         internal ValidationContainer BuildContainer(
             EventHandler<DataErrorsChangedEventArgs> errorsChanged,
@@ -20,14 +31,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Services.Impleme
             var result = new ValidationContainer(propertyValidations, errorsChanged, viewModel);
 
             return result;
-        }
-
-        public IPropertyValidationConfigurationBuilder ForProperty(string propertyName)
-        {
-            var propConfig = new PropertyValidationConfiguration(propertyName);
-            _validationConfiguration.Add(propConfig);
-            var builder = new PropertyValidationConfigurationBuilder(this, propConfig);
-            return builder;
         }
     }
 }

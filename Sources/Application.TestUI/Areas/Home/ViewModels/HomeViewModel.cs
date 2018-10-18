@@ -9,13 +9,15 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.Home.ViewModels
     public class HomeViewModel : ViewModelBase, IMainNavigationViewModel, IViewModelWithHeading, IInitializableViewModel
     {
         private readonly HomeViewModelCommands _viewModelCommands;
-
-        public HomeViewModel(HomeViewModelCommands viewModelCommands) => _viewModelCommands = viewModelCommands;
-
         public string HeadingText { get; } = "Hello Home";
         public ViewModelCommand NavigateToNoMainNavigation => _viewModelCommands.NavigateToNoMainNavigation;
         public string NavigationDescription { get; } = "Home";
         public int NavigationSequence { get; } = 1;
+
+        public HomeViewModel(HomeViewModelCommands viewModelCommands)
+        {
+            _viewModelCommands = viewModelCommands;
+        }
 
         public async Task InitializeAsync()
         {

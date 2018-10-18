@@ -12,20 +12,24 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties.LoadingB
                 typeof(bool),
                 typeof(LoadingButtonExtension),
                 new PropertyMetadata(false, ShowLoadingChanged));
-
         private static readonly DependencyPropertyKey _oldContentPropertyKey =
             DependencyProperty.RegisterAttachedReadOnly(
                 "OldContent",
                 typeof(object),
                 typeof(LoadingButtonExtension),
                 null);
-
         public static readonly DependencyProperty OldContentProperty =
             _oldContentPropertyKey.DependencyProperty;
 
-        public static bool GetOldContent(DependencyObject dp) => (bool)dp.GetValue(OldContentProperty);
+        public static bool GetOldContent(DependencyObject dp)
+        {
+            return (bool)dp.GetValue(OldContentProperty);
+        }
 
-        public static bool GetShowLoading(DependencyObject dp) => (bool)dp.GetValue(ShowLoadingProperty);
+        public static bool GetShowLoading(DependencyObject dp)
+        {
+            return (bool)dp.GetValue(ShowLoadingProperty);
+        }
 
         public static void SetShowLoading(DependencyObject dp, bool value)
         {

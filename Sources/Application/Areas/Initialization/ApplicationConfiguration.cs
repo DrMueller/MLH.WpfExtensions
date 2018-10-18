@@ -9,6 +9,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization
 {
     public class ApplicationConfiguration
     {
+        public string ApplicationTitle { get; }
+        public ImageSource Icon { get; }
+
         private ApplicationConfiguration(string applicationTitle, ImageSource icon)
         {
             Guard.StringNotNullOrEmpty(() => applicationTitle);
@@ -16,9 +19,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization
             ApplicationTitle = applicationTitle;
             Icon = icon;
         }
-
-        public string ApplicationTitle { get; }
-        public ImageSource Icon { get; }
 
         public static ApplicationConfiguration CreateFromIcon(string applicationTitle, Icon icon)
         {

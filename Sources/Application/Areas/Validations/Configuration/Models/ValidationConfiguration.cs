@@ -8,16 +8,21 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Configuration.Models
     {
         private IList<PropertyValidationConfiguration> _propertyValidationConfigurations;
 
-        public ValidationConfiguration() => _propertyValidationConfigurations = new List<PropertyValidationConfiguration>();
+        public ValidationConfiguration()
+        {
+            _propertyValidationConfigurations = new List<PropertyValidationConfiguration>();
+        }
 
         public void Add(PropertyValidationConfiguration config)
         {
             _propertyValidationConfigurations.Add(config);
         }
 
-        internal IDictionary<string, PropertyValidation> BuildPropertyValidations() =>
-            _propertyValidationConfigurations
+        internal IDictionary<string, PropertyValidation> BuildPropertyValidations()
+        {
+            return _propertyValidationConfigurations
                 .Select(f => f.BuildPropertyValidation())
                 .ToDictionary(f => f.PropertyName, f => f);
+        }
     }
 }

@@ -9,7 +9,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
     internal class NavigationService : INavigationService
     {
         private readonly IViewModelFactory _containerViewModelBaseFactory;
-
         private readonly INavigationConfigurationService _navigationConfigurationService;
 
         public NavigationService(INavigationConfigurationService navigationConfigurationService, IViewModelFactory containerViewModelBaseFactory)

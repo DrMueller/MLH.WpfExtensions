@@ -12,7 +12,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
     {
         private readonly IProvisioningService _provisioningService;
 
-        public ViewModelFactory(IProvisioningService provisioningService) => _provisioningService = provisioningService;
+        public ViewModelFactory(IProvisioningService provisioningService)
+        {
+            _provisioningService = provisioningService;
+        }
 
         public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
         {

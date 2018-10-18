@@ -11,7 +11,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(ICommand),
                 typeof(MouseMoveCommandBinding),
                 new PropertyMetadata(null, MouseMoveCommandPropertyChangedCallback));
-
         public static readonly DependencyProperty MouseMoveCommandParameterProperty =
             DependencyProperty.RegisterAttached(
                 "MouseMoveCommandParameter",
@@ -19,9 +18,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(MouseMoveCommandBinding),
                 new PropertyMetadata(null, null));
 
-        public static ICommand GetMouseMoveCommand(DependencyObject dependencyObject) => (ICommand)dependencyObject.GetValue(MouseMoveCommandProperty);
+        public static ICommand GetMouseMoveCommand(DependencyObject dependencyObject)
+        {
+            return (ICommand)dependencyObject.GetValue(MouseMoveCommandProperty);
+        }
 
-        public static object GetMouseMoveCommandParameter(DependencyObject dependencyObject) => dependencyObject.GetValue(MouseMoveCommandParameterProperty);
+        public static object GetMouseMoveCommandParameter(DependencyObject dependencyObject)
+        {
+            return dependencyObject.GetValue(MouseMoveCommandParameterProperty);
+        }
 
         public static void SetMouseMoveCommand(DependencyObject dependencyObject, ICommand value)
         {

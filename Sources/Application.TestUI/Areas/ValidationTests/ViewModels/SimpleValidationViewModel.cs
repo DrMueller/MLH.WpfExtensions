@@ -11,12 +11,8 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.ValidationTests.ViewModels
     public class SimpleValidationViewModel : ViewModelWithValidation, IMainNavigationViewModel, IViewModelWithHeading
     {
         private readonly SimpleValidationViewModelCommands _commands;
-
         private DateTime _birthDate;
-
         private string _firstName;
-
-        public SimpleValidationViewModel(SimpleValidationViewModelCommands commands) => _commands = commands;
 
         public DateTime BirthDate
         {
@@ -52,6 +48,11 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.ValidationTests.ViewModels
         public string NavigationDescription { get; } = "Validation Simple";
         public int NavigationSequence { get; } = 2;
         public ViewModelCommand ValidateStuff => _commands.ValidateStuff;
+
+        public SimpleValidationViewModel(SimpleValidationViewModelCommands commands)
+        {
+            _commands = commands;
+        }
 
         protected override void ConfigureValidation(IValidationConfigurationBuilder builder)
         {

@@ -12,9 +12,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.I
     internal class ViewModelMappingService : IViewModelMappingService
     {
         private readonly IDataTemplateFactory _dataTemplateFactory;
-
         private readonly IResourceDictionaryFactory _resourceDictionaryFactory;
-
         private readonly IViewViewModelMapFactory _viewViewModelMapFactory;
 
         public ViewModelMappingService(

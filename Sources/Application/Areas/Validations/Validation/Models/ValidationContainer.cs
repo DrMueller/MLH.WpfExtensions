@@ -10,10 +10,9 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Validation.Models
     public class ValidationContainer
     {
         private readonly IDictionary<string, PropertyValidation> _entries;
-
         private EventHandler<DataErrorsChangedEventArgs> _errorsChanged;
-
         private IViewModel _viewModel;
+        public bool HasErrors { get; private set; }
 
         internal ValidationContainer(
             IDictionary<string, PropertyValidation> entries,
@@ -24,8 +23,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Validations.Validation.Models
             _errorsChanged = errorsChanged;
             _viewModel = viewModel;
         }
-
-        public bool HasErrors { get; private set; }
 
         public IReadOnlyCollection<string> GetErrorMessages(string propertyName)
         {

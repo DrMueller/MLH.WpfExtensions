@@ -10,7 +10,10 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.MaterialDesign.Implementati
     {
         private readonly IResourceDictionaryFactory _resourceDictionaryFactory;
 
-        public MaterialDesignInitializationService(IResourceDictionaryFactory resourceDictionaryFactory) => _resourceDictionaryFactory = resourceDictionaryFactory;
+        public MaterialDesignInitializationService(IResourceDictionaryFactory resourceDictionaryFactory)
+        {
+            _resourceDictionaryFactory = resourceDictionaryFactory;
+        }
 
         public void Initialize()
         {

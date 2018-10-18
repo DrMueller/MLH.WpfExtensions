@@ -3,7 +3,6 @@
     public enum AppearanceTheme
     {
         Light,
-
         Dark
     }
 }

@@ -6,13 +6,13 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.Components.CommandBars.View
 {
     public class CommandsViewData
     {
+        public IReadOnlyCollection<ViewModelCommand> Entries { get; }
+
         public CommandsViewData(IReadOnlyCollection<ViewModelCommand> entries)
         {
             Guard.ObjectNotNull(() => entries);
 
             Entries = entries;
         }
-
-        public IReadOnlyCollection<ViewModelCommand> Entries { get; }
     }
 }

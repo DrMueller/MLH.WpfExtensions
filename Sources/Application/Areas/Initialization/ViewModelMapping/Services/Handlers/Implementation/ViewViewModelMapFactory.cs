@@ -13,10 +13,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Initialization.ViewModelMapping.Services.H
     internal class ViewViewModelMapFactory : IViewViewModelMapFactory
     {
         private static readonly Type _viewModelMapType = typeof(IViewMap<>);
-
         private readonly ITypeReflectionService _typeReflectionService;
 
-        public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService) => _typeReflectionService = typeReflectionService;
+        public ViewViewModelMapFactory(ITypeReflectionService typeReflectionService)
+        {
+            _typeReflectionService = typeReflectionService;
+        }
 
         public IReadOnlyCollection<ViewViewModelMap> CreateAllMaps(Assembly rootAssembly)
         {

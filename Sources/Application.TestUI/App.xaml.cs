@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using Mmu.Mlh.ApplicationExtensions.Areas.DependencyInjection.Models;
-using Mmu.Mlh.LanguageExtensions.Areas.Maybes;
+using Mmu.Mlh.LanguageExtensions.Areas.Types.Maybes;
 using Mmu.Mlh.WpfExtensions.Areas.Initialization;
 
 namespace Mmu.Mlh.WpfExtensions.TestUI

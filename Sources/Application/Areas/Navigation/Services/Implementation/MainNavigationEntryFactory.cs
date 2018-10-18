@@ -13,7 +13,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.Navigation.Services.Implementation
     internal class MainNavigationEntryFactory : IMainNavigationEntryFactory
     {
         private readonly INavigationService _navigationService;
-
         private readonly IViewModelFactory _viewModelFactory;
 
         public MainNavigationEntryFactory(

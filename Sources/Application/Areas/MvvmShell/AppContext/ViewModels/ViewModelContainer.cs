@@ -19,30 +19,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
     public sealed class ViewModelContainer : INotifyPropertyChanged
     {
         private readonly IAppearanceService _appearanceService;
-
         private readonly IInformationSubscriptionViewService _informationSubscriptionViewService;
-
         private readonly INavigationConfigurationService _navigationConfigurationService;
-
         private readonly IMainNavigationEntryFactory _navigationEntryFactory;
-
         private IViewModel _currentContent;
-
         private InformationEntryViewData _informationEntry;
-
         private bool _isMainNavigationPaneOpen;
-
-        public ViewModelContainer(
-            INavigationConfigurationService navigationConfigurationService,
-            IMainNavigationEntryFactory navigationEntryFactory,
-            IAppearanceService appearanceService,
-            IInformationSubscriptionViewService informationSubscriptionViewService)
-        {
-            _navigationConfigurationService = navigationConfigurationService;
-            _navigationEntryFactory = navigationEntryFactory;
-            _appearanceService = appearanceService;
-            _informationSubscriptionViewService = informationSubscriptionViewService;
-        }
 
         public static ParametredRelayCommand CloseCommand
         {
@@ -117,6 +99,18 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
         {
             get => _appearanceService.AppearanceTheme;
             set => _appearanceService.AppearanceTheme = value;
+        }
+
+        public ViewModelContainer(
+            INavigationConfigurationService navigationConfigurationService,
+            IMainNavigationEntryFactory navigationEntryFactory,
+            IAppearanceService appearanceService,
+            IInformationSubscriptionViewService informationSubscriptionViewService)
+        {
+            _navigationConfigurationService = navigationConfigurationService;
+            _navigationEntryFactory = navigationEntryFactory;
+            _appearanceService = appearanceService;
+            _informationSubscriptionViewService = informationSubscriptionViewService;
         }
 
         public void InformationReceivedCallback(InformationEntryViewData informationEntry)

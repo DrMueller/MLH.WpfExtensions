@@ -14,14 +14,12 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(string),
                 typeof(EventCommandBinding),
                 new PropertyMetadata(null, null));
-
         public static readonly DependencyProperty CommandProperty =
             DependencyProperty.RegisterAttached(
                 "Command",
                 typeof(ICommand),
                 typeof(EventCommandBinding),
                 new PropertyMetadata(null, CommandPropertyChangedCallback));
-
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.RegisterAttached(
                 "CommandParameter",
@@ -29,11 +27,20 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 typeof(EventCommandBinding),
                 new PropertyMetadata(null, null));
 
-        public static ICommand GetCommand(DependencyObject dependencyObject) => (ICommand)dependencyObject.GetValue(CommandProperty);
+        public static ICommand GetCommand(DependencyObject dependencyObject)
+        {
+            return (ICommand)dependencyObject.GetValue(CommandProperty);
+        }
 
-        public static object GetCommandParameter(DependencyObject dependencyObject) => dependencyObject.GetValue(CommandParameterProperty);
+        public static object GetCommandParameter(DependencyObject dependencyObject)
+        {
+            return dependencyObject.GetValue(CommandParameterProperty);
+        }
 
-        public static string GetEventName(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(EventNameProperty);
+        public static string GetEventName(DependencyObject dependencyObject)
+        {
+            return (string)dependencyObject.GetValue(EventNameProperty);
+        }
 
         public static void SetCommand(DependencyObject dependencyObject, ICommand value)
         {

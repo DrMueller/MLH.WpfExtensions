@@ -7,10 +7,12 @@ namespace Mmu.Mlh.WpfExtensions.TestUI.Areas.Home.ViewModels.ViewModelCommands
     public class HomeViewModelCommands : IViewModelCommandContainer<HomeViewModel>
     {
         private readonly INavigationService _navigationService;
-
-        public HomeViewModelCommands(INavigationService navigationService) => _navigationService = navigationService;
-
         public ViewModelCommand NavigateToNoMainNavigation { get; private set; }
+
+        public HomeViewModelCommands(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
 
         public Task InitializeAsync(HomeViewModel context)
         {
