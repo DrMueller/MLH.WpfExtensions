@@ -17,6 +17,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
                 return;
             }
 
+
             if (args.OldValue == null && args.NewValue != null)
             {
                 dataGrid.MouseDoubleClick += ExecuteDataGridDoubleClick;
