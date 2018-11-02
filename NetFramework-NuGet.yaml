@@ -1,4 +1,4 @@
-name: 2.1$(rev:.r) # build numbering format
+name: 1.0$(rev:.r) # build numbering format
 
 resources:
 - repo: self
@@ -15,8 +15,8 @@ phases:
    - vstest
 
   variables:
-    ProductName: 'MLH.WpfExtensions'
-    ProductDescription: 'DrMuellers little WPF Extensions'
+    ProductName: 'DEFIME'
+    ProductDescription: 'DEFINE'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.4.1'
@@ -96,7 +96,7 @@ phases:
   condition: succeeded()
   server: true
   variables:
-    ParentWorkItemId: '236'
+    ParentWorkItemId: 'DEFINE'
   steps:
   - task: AzureFunction@1
     displayName: 'Create Release Work Item'
