@@ -1,86 +1,91 @@
+name: 2.1$(rev:.r) # build numbering format
+
 resources:
 - repo: self
-queue:
-  name: Hosted VS2017
-  demands: 
-  - msbuild
-  - visualstudio
-  - vstest
+phases:
+- phase: Phase_1
+  displayName: Agent job 1
 
-variables:
-  BuildPlatform: 'any cpu'
-  BuildConfiguration: 'release'
-  AssemblyProduct: 'DEFINE'
-  AssemblyDescription: 'DEFINE'
-steps:
-- task: NuGetToolInstaller@0
-  displayName: 'Use NuGet 4.4.1'
-  inputs:
-    versionSpec: 4.4.1
+  condition: succeeded()
+  queue:
+    name: Hosted VS2017
+    demands: 
+   - msbuild
+   - visualstudio
+   - vstest
 
-
-- task: NuGetCommand@2
-  displayName: Restore
-  inputs:
-    vstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
+  variables:
+    ProductName: 'MLH.WpfExtensions'
+    ProductDescription: 'DrMuellers little WPF Extensions'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.4.1'
+    inputs:
+      versionSpec: 4.4.1
 
 
-- task: sebastianlux.UpdateAssemblyInfo.UpdateAssemblyInfo-task.Update AssemblyInfo@1
-  displayName: 'Update AssemblyInfo.cs files: $(Build.SourcesDirectory)'
-  inputs:
-    assemblyProduct: '$(AssemblyProduct)'
-
-    assemblyDescription: '$(Build.BuildNumber)'
-
-    assemblyVersion: '$(Build.BuildNumber)'
-
-    assemblyFileVersion: '$(Build.BuildNumber)'
-
-    assemblyInformationalVersion: '$(Build.BuildNumber)'
+  - task: NuGetCommand@2
+    displayName: Restore
+    inputs:
+      vstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
 
 
-- task: VSBuild@1
-  displayName: 'Build solution **\*.sln'
-  inputs:
-    msbuildArgs: '/p:TreatWarningsAsErrors="true"'
+  - task: sebastianlux.UpdateAssemblyInfo.UpdateAssemblyInfo-task.Update AssemblyInfo@1
+    displayName: 'Update AssemblyInfo.cs files: $(Build.SourcesDirectory)'
+    inputs:
+      assemblyProduct: '$(ProductName)'
 
-    platform: '$(BuildPlatform)'
+      assemblyDescription: '$(ProductDescription)'
 
-    configuration: '$(BuildConfiguration)'
+      assemblyVersion: '$(Build.BuildNumber)'
 
+      assemblyFileVersion: '$(Build.BuildNumber)'
 
-- task: VSTest@2
-  displayName: 'VsTest - testAssemblies'
-  inputs:
-    testAssemblyVer2: |
-     **\$(BuildConfiguration)\*test*.dll
-     !**\obj\**
+      assemblyInformationalVersion: '$(Build.BuildNumber)'
 
 
-- task: PublishSymbols@2
-  displayName: 'Publish symbols path'
-  inputs:
-    PublishSymbols: false
+  - task: VSBuild@1
+    displayName: 'Build solution **\*.sln'
+    inputs:
+      msbuildArgs: '/p:TreatWarningsAsErrors="true"'
+
+      platform: '$(BuildPlatform)'
+
+      configuration: '$(BuildConfiguration)'
 
 
-- task: NuGetCommand@2
-  displayName: Pack
-  inputs:
-    command: pack
-
-    packagesToPack: 'Sources/Application/*.csproj'
-
-    versioningScheme: byBuildNumber
+  - task: VSTest@2
+    displayName: 'VsTest - testAssemblies'
+    inputs:
+      testAssemblyVer2: |  
+       **\$(BuildConfiguration)\*test*.dll
+       !**\obj\**
 
 
-- task: NuGetCommand@2
-  displayName: Push
-  inputs:
-    command: push
+  - task: PublishSymbols@2
+    displayName: 'Publish symbols path'
+    inputs:
+      PublishSymbols: false
 
-    publishVstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
 
-    allowPackageConflicts: true
+  - task: NuGetCommand@2
+    displayName: Pack
+    inputs:
+      command: pack
+
+      packagesToPack: 'Sources/Application/*.csproj'
+
+      versioningScheme: byBuildNumber
+
+
+  - task: NuGetCommand@2
+    displayName: Push
+    inputs:
+      command: push
+
+      publishVstsFeed: '3c2d9c9a-d8f7-42f4-b7a3-dddf4064110a'
+
+      allowPackageConflicts: true
 
 
 
@@ -91,7 +96,7 @@ steps:
   condition: succeeded()
   server: true
   variables:
-    ParentWorkItemId: 'DEFINE'
+    ParentWorkItemId: '236'
   steps:
   - task: AzureFunction@1
     displayName: 'Create Release Work Item'
@@ -111,4 +116,5 @@ steps:
            "buildVersion": "$(Build.BuildNumber)",
            "parentWorkItemId": $(ParentWorkItemId)
        }
+
 
