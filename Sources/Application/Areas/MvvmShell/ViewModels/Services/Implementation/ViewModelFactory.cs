@@ -17,7 +17,8 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
             _provisioningService = provisioningService;
         }
 
-        public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>() where TBehavior : IViewModelWithBehaviorBase
+        public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>()
+            where TBehavior : IViewModelWithBehaviorBase
         {
             var behaviorType = typeof(TBehavior);
             var viewModelsWithBehaviorType =
@@ -35,7 +36,8 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
             return result;
         }
 
-        public async Task<T> CreateAsync<T>() where T : IViewModel
+        public async Task<T> CreateAsync<T>()
+            where T : IViewModel
         {
             var result = (T)await CreateAsync(typeof(T));
             return result;

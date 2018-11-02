@@ -57,6 +57,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
             dependencyObject.SetValue(EventNameProperty, value);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "SA1119:StatementMustNotUseUnnecessaryParenthesis", Justification = "Actually needed")]
         private static void CommandPropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (!(d is UIElement uiElement))
@@ -101,6 +102,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
             return result;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "SA1119:StatementMustNotUseUnnecessaryParenthesis", Justification = "Actually needed")]
         private static void OnEvent(object sender, RoutedEventArgs e)
         {
             var uiElement = sender as UIElement;

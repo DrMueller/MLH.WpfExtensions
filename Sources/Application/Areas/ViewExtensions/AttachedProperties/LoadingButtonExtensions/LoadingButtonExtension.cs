@@ -12,12 +12,15 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties.LoadingB
                 typeof(bool),
                 typeof(LoadingButtonExtension),
                 new PropertyMetadata(false, ShowLoadingChanged));
+
         private static readonly DependencyPropertyKey _oldContentPropertyKey =
             DependencyProperty.RegisterAttachedReadOnly(
                 "OldContent",
                 typeof(object),
                 typeof(LoadingButtonExtension),
                 null);
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "SA1202:ElementsMustBeOrderedByAccess", Justification = "Public static uses private static, so it is fine")]
         public static readonly DependencyProperty OldContentProperty =
             _oldContentPropertyKey.DependencyProperty;
 
@@ -36,6 +39,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties.LoadingB
             dp.SetValue(ShowLoadingProperty, value);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "SA1119:StatementMustNotUseUnnecessaryParenthesis", Justification = "Actually needed")]
         private static void ShowLoadingChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (!(d is ContentControl contentControl))

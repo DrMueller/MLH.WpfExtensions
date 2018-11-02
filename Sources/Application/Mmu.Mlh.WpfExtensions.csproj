@@ -99,7 +99,7 @@
     <Compile Include="Areas\Initialization\MaterialDesign\IMaterialDesignInitializationService.cs" />
     <Compile Include="Areas\Initialization\MaterialDesign\Handlers\IResourceDictionaryFactory.cs" />
     <Compile Include="Areas\Initialization\AppStart\Implementation\AppStartService.cs" />
-    <Compile Include="Areas\Initialization\ViewModelMapping\Models\ViewModelMap.cs" />
+    <Compile Include="Areas\Initialization\ViewModelMapping\Models\ViewViewModelMap.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\IDataTemplateFactory.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\Implementation\DataTemplateFactory.cs" />
     <Compile Include="Areas\Initialization\ViewModelMapping\Services\Handlers\Implementation\ViewViewModelMapFactory.cs" />
@@ -233,9 +233,12 @@
     <Analyzer Include="..\..\packages\Microsoft.NetCore.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.NetFramework.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Microsoft.NetFramework.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Text.Analyzers.2.6.2\analyzers\dotnet\cs\Text.Analyzers.dll" />
     <Analyzer Include="..\..\packages\Text.Analyzers.2.6.2\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -39,6 +39,8 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
             }
         }
 
+        public static ViewModelCommand CloseVmc => new ViewModelCommand("Close App", CloseCommand);
+
         public ICommand CloseMainNavigationPane
         {
             get
@@ -50,8 +52,6 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.AppContext.ViewModels
                     });
             }
         }
-
-        public static ViewModelCommand CloseVmc => new ViewModelCommand("Close App", CloseCommand);
 
         public IViewModel CurrentContent
         {

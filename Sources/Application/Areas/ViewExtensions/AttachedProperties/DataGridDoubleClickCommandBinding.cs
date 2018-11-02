@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -8,6 +9,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.ViewExtensions.AttachedProperties
     {
         public static readonly DependencyProperty DataGridDoubleClickProperty = DependencyProperty.RegisterAttached("DataGridDoubleClickCommand", typeof(ICommand), typeof(DataGridDoubleClickCommandBinding), new PropertyMetadata(AttachOrRemoveDataGridDoubleClickEvent));
 
+        [SuppressMessage("Microsoft.Usage", "SA1119:StatementMustNotUseUnnecessaryParenthesis", Justification = "Actually needed")]
         public static void AttachOrRemoveDataGridDoubleClickEvent(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             if (!(dependencyObject is DataGrid dataGrid))
