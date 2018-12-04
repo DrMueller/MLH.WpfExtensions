@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Mmu.Mlh.ApplicationExtensions.Areas.ServiceProvisioning;
+using Mmu.Mlh.ServiceProvisioning.Areas.Provisioning.Services;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Behaviors;
 using Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Models;
 
@@ -10,11 +10,11 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
 {
     public class ViewModelFactory : IViewModelFactory
     {
-        private readonly IProvisioningService _provisioningService;
+        private readonly IServiceLocator _serviceLocator;
 
-        public ViewModelFactory(IProvisioningService provisioningService)
+        public ViewModelFactory(IServiceLocator serviceLocator)
         {
-            _provisioningService = provisioningService;
+            _serviceLocator = serviceLocator;
         }
 
         public async Task<IReadOnlyCollection<TBehavior>> CreateAllWithBehaviorAsync<TBehavior>()
@@ -22,7 +22,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
         {
             var behaviorType = typeof(TBehavior);
             var viewModelsWithBehaviorType =
-                _provisioningService
+                _serviceLocator
                     .GetAllServices<IViewModel>()
                     .Where(f => behaviorType.IsInstanceOfType(f))
                     .Select(f => f.GetType())
@@ -51,7 +51,7 @@ namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.ViewModels.Services.Implementati
                 throw new ArgumentException($"{viewModelType.Name} is not assignable from IViewModel.");
             }
 
-            var result = (IViewModel)_provisioningService.GetService(viewModelType);
+            var result = (IViewModel)_serviceLocator.GetService(viewModelType);
             if (result is IInitializableViewModel initializable)
             {
                 await initializable.InitializeAsync();
