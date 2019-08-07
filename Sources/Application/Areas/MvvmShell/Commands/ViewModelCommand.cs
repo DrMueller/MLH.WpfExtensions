@@ -2,7 +2,7 @@
 
 namespace Mmu.Mlh.WpfExtensions.Areas.MvvmShell.Commands
 {
-    public class ViewModelCommand
+    public class ViewModelCommand : IViewModelCommand
     {
         public ICommand Command { get; }
         public string Description { get; }
